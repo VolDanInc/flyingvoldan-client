@@ -4,12 +4,14 @@ import './App.css';
 import SignupPage from "./pages/SignupPage";  // <== IMPORT
 import LoginPage from "./pages/LoginPage";  // <== IMPORT
 import TripsPage from "./pages/TripsPage";  // <== IMPORT
-import Navbar from "./components/NavBar"; 
+import HomePage from "./pages/HomePage";  // <== IMPORT
+import NavBar from "./components/NavBar"; 
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NavBar />
+      <HomePage />
  
       <Routes>      
      {/*   <Route path="/" element={ <HomePage /> } />
