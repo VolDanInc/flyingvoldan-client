@@ -55,6 +55,7 @@ function AuthProviderWrapper(props) {
 
     const logOutUser = () => {                   // <== ADD    
         // To log out the user, remove the token
+        //console.log('I remove token...');
         removeToken();
         // and update the state variables    
         authenticateUser();
@@ -72,7 +73,8 @@ function AuthProviderWrapper(props) {
                 isLoading,
                 user,
                 storeToken,
-                authenticateUser
+                authenticateUser,
+                logOutUser
             }}
         >
             {props.children}

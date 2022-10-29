@@ -15,7 +15,7 @@ function EditAircraftPage(props) {
 
   useEffect(() => {                                 
     axios
-      .get(`${API_URL}/api/projects/${aircraftId}`)
+      .get(`${API_URL}/aircrafts/${aircraftId}`)
       .then((response) => {
        
         const oneAircraft = response.data;
@@ -33,7 +33,7 @@ function EditAircraftPage(props) {
  
    //UPDATE:
     axios
-      .put(`${API_URL}/api/aircrafts/${aircraftId}`, requestBody)
+      .put(`${API_URL}/aircrafts/${aircraftId}`, requestBody)
       .then((response) => {
         
         navigate(`/aircrafts/${aircraftId}`)

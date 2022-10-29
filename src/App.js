@@ -5,25 +5,24 @@ import SignupPage from "./pages/SignupPage";  // <== IMPORT
 import LoginPage from "./pages/LoginPage";  // <== IMPORT
 import TripsPage from "./pages/TripsPage";  // <== IMPORT
 import HomePage from "./pages/HomePage";  // <== IMPORT
-import NavBar from "./components/NavBar"; 
+import NavBar from "./components/NavBar";
+import DateTime from "./components/DateTime";
+import DTPicker from "./components/DTPicker";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <HomePage />
- 
-      <Routes>      
-     {/*   <Route path="/" element={ <HomePage /> } />
-        
-        <Route path="/projects/:projectId" element={ <ProjectDetailsPage /> } />
-        <Route path="/projects/edit/:projectId" element={ <EditProjectPage /> } />*/}
-        <Route path="/trips" element={ <TripsPage /> } />
-        <Route path="/signup" element={ <SignupPage /> } />
-        <Route path="/login" element={ <LoginPage /> } />
+      {/* <DateTime />
+      <DTPicker /> */}
+      <Routes>
+        <Route path="/" element={<HomePage />} /> 
+        <Route path="/trips" element={<TripsPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );
 }
- 
+
 export default App;
