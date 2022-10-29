@@ -1,8 +1,8 @@
 // src/pages/EditProjectPage.js
 import { useParams, useNavigate } from "react-router-dom";  //  <== IMPORT
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-
+import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005";
 
@@ -11,6 +11,11 @@ function EditProjectPage(props) {
     const [duration, setDuration] = useState("");
     const { tripId } = useParams();
     const redirect = useNavigate();
+    const { user } = useContext(AuthContext);
+    let userId = "";
+    if (user) {
+        userId = user._id;
+    }
 
     useEffect(() => {                                  // <== ADD
         axios
@@ -39,7 +44,7 @@ function EditProjectPage(props) {
             .then((response) => {
                 // Once the request is resolved successfully and the project
                 // is updated we navigate back to the details page
-                redirect(`/trips`)
+                redirect(`/trips/user/${userId}`);
             });
     };
 

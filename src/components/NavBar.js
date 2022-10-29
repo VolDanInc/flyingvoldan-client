@@ -17,15 +17,18 @@ function Navbar() {
         <button>Home</button>
       </Link>
 
+      {user
+        ? user._id && 
+        <Link to={`/trips/user/${user._id}`}>
+          <button>Trips history</button>
+        </Link>
+        : <></>
+      }
+
       {isLoggedIn && (
         <>
-          <Link to="/trips">
-            <button>Trips history</button>
-          </Link>
-
-          
           <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
+          <span>Hello {user && user.name}!</span>
         </>
       )}
 
