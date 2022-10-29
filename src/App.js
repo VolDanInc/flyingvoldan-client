@@ -19,13 +19,15 @@ function App() {
       {/* <DateTime />
       <DTPicker /> */}
       <Routes>
-        <Route path="/" element={<HomePage />} /> 
+        <Route path="/" element={<HomePage />} />
         <Route path="/trips" element={<TripsPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/aircrafts/create" element= {<CreateAircraft />}/>
-        <Route path='/aircrafts/edit/:aircraftId' element={<EditAircraftPage />} /> 
-     
+        <Route path="/aircrafts/create" element={<CreateAircraft />} />
+        <Route path='/aircrafts/edit/:aircraftId' element={<EditAircraftPage />} />
+        <Route path="/trips/create/:aircraftId" element={<CreateTrip />} />
+        <Route path="/trips/edit/:tripId" element={<EditTrip />} />
+        
       </Routes>
     </div>
   );
