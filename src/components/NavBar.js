@@ -23,7 +23,7 @@ function Navbar() {
             <button>Trips history</button>
           </Link>
 
-          {/*   UPDATE   */}
+          
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>
         </>
