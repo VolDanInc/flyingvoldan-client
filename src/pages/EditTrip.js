@@ -9,6 +9,7 @@ const API_URL = "http://localhost:5005";
 function EditProjectPage(props) {
     const [startTrip, setStartTrip] = useState("");
     const [duration, setDuration] = useState("");
+    const [peoplesNum, setPeoplesNum] = useState("1");
     const { tripId } = useParams();
     const redirect = useNavigate();
     const { user } = useContext(AuthContext);
@@ -28,6 +29,7 @@ function EditProjectPage(props) {
                 const oneTrip = response.data;
                 setStartTrip(oneTrip.startTrip);
                 setDuration(oneTrip.duration);
+                setPeoplesNum(oneTrip.peoplesNum);
             })
             .catch((error) => console.log(error));
 
@@ -81,6 +83,16 @@ function EditProjectPage(props) {
                     <option value="90" >90</option>
                     <option value="120" >120</option>
                 </select>
+
+                <label>Peoples number:</label>
+                <input
+                    type="number"
+                    name="peoplesNum"
+                    min="1"
+                    max="10"
+                    value={peoplesNum}
+                    onChange={(e) => setPeoplesNum(e.target.value)}
+                />
 
                 <button type="submit">Save changes</button>
                 <button onClick={deleteTrip}>Delete Trip</button>

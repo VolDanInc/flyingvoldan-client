@@ -16,7 +16,7 @@ function Navbar() {
       <Link to="/">
         <button>Home</button>
       </Link>
-
+      <Link to={`/trips/comments`}> <button>View comments</button> </Link>
       {user
         ? user._id && 
         <Link to={`/trips/user/${user._id}`}>
@@ -43,6 +43,7 @@ function Navbar() {
         ? user.isAdmin && (
           <>
             <Link to="/aircrafts/create"> <button>New aircraft</button> </Link>
+            
           </>
         )
         : (<></>)}

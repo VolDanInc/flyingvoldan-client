@@ -1,9 +1,9 @@
-import { getActiveElement } from '@testing-library/user-event/dist/utils';
+//import { getActiveElement } from '@testing-library/user-event/dist/utils';
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
-import CreateAircraft from './CreateAircraft';
+//import CreateAircraft from './CreateAircraft';
 const API_URL = "http://localhost:5005";
 
 function HomePage() {
@@ -41,8 +41,9 @@ function HomePage() {
                     <div className="card" key={index}>
                         
                         <p>Aircraft: {aircraft.name}</p>
+                        <img src={aircraft.img} alt="No picture"/>
                         <p>Description: {aircraft.description}</p>
-                        <p>Price: {aircraft.price}$</p>
+                        <p>Price: {aircraft.price}$ per person per hour.</p>
                         <p>Seats: {aircraft.seats}</p>
 
                         <Link to={`/aircrafts/${aircraft._id}`}> Details</Link> <> </>
