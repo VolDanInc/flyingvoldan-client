@@ -8,7 +8,7 @@ function CreateAircraft(props) {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [seats, setSeats] = useState("");
-  const [timetable, setTimetable] = useState([]);
+  const [timetable, setTimetable] = useState(["08:00:00", "12:00:00", "16:00:00"]);
   const navigate = useNavigate();
 
   const API_URL = "http://localhost:5005";
@@ -30,7 +30,7 @@ function CreateAircraft(props) {
         setDescription("");
         setPrice("");
         setSeats("");
-        setTimetable([]);
+        setTimetable(["08:00:00", "12:00:00", "16:00:00"]);
         navigate('/');
         // props.refreshAircrafts(); 
       })
