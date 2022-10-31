@@ -14,6 +14,7 @@ import EditAircraftPage from './pages/EditAircraftPage';
 import CreateTrip from './pages/CreateTrip';
 import EditTrip from './pages/EditTrip';
 import TripDetails from './components/TripDetails';
+import AircraftDetailsPage from './components/AircraftDetails';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/aircrafts/create" element={<CreateAircraft />} />
         <Route path='/aircrafts/edit/:aircraftId' element={<EditAircraftPage />} />
+        <Route path='/aircrafts/:aircraftId' element={<AircraftDetailsPage />} />
         <Route path="/trips/create/:aircraftId" element={<CreateTrip />} />
         <Route path="/trips/edit/:tripId" element={<EditTrip />} />
         <Route path="/trips/details/:tripId" element={<TripDetails />} />
