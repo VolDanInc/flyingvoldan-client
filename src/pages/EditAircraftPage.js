@@ -12,6 +12,7 @@ function EditAircraftPage(props) {
   const [price, setPrice] = useState("");
   const [seats, setSeats] = useState("");
   const [timetable, setTimetable] = useState([]);
+  const [isBusy, setIsBusy] = useState([]);
 
   const { aircraftId } = useParams();
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ function EditAircraftPage(props) {
         setPrice(oneAircraft.price);
         setSeats(oneAircraft.seats);
         setTimetable(oneAircraft.timetable);
+        setIsBusy(oneAircraft.isBusy);
       })
       .catch((error) => console.log(error));
 
@@ -36,7 +38,7 @@ function EditAircraftPage(props) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, img, description, price, seats, timetable };
+    const requestBody = { name, img, description, price, seats, timetable, isBusy };
 
     //UPDATE:
     axios
@@ -45,7 +47,8 @@ function EditAircraftPage(props) {
         console.log(response)
 
         navigate(`/`)
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
 

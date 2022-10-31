@@ -9,6 +9,7 @@ function CreateAircraft(props) {
   const [price, setPrice] = useState("");
   const [seats, setSeats] = useState("");
   const [timetable, setTimetable] = useState(["08:00:00", "12:00:00", "16:00:00"]);
+  const [isBusy, setIsBusy] = useState([]);
   const navigate = useNavigate();
 
   const API_URL = "http://localhost:5005";
@@ -16,7 +17,7 @@ function CreateAircraft(props) {
     e.preventDefault();
 
 
-    const requestBody = { name, img, description, price, seats, timetable };
+    const requestBody = { name, img, description, price, seats, timetable, isBusy };
     const storedToken = localStorage.getItem('authToken');
     axios.post(
       `${API_URL}/aircrafts`,
@@ -31,6 +32,7 @@ function CreateAircraft(props) {
         setPrice("");
         setSeats("");
         setTimetable(["08:00:00", "12:00:00", "16:00:00"]);
+        setIsBusy([]);
         navigate('/');
         // props.refreshAircrafts(); 
       })

@@ -17,6 +17,7 @@ function CreateTrip(props) {
     const [peoplesNum, setPeoplesNum] = useState("1");
     const [duration, setDuration] = useState("30");
     const [timetable, setTimetable] = useState([]);
+    const [isBusy, setIsBusy] = useState([]);
     const [message, setMessage] = useState("");
 
     const { aircraftId } = useParams();
@@ -35,36 +36,50 @@ function CreateTrip(props) {
 
                 const oneAircraft = response.data;
                 setTimetable(oneAircraft.timetable);
+                //setIsBusy(oneAircraft.isBusy);
             })
             .catch((error) => console.log(error));
 
     }, [aircraftId]);
 
-    const handleSubmit = (e) => {     
+    const handleSubmit = (e) => {
         e.preventDefault();
         //console.log(timetable);
         //console.log(startTrip.toLocaleTimeString());
-        if (startTrip && timetable.includes(startTrip.toLocaleTimeString())) {
-        
-        const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
+        let busy = isBusy.includes(startTrip.valueOf());
+        let startTime = timetable.includes(startTrip.toLocaleTimeString());
 
-        axios
-            .post(`${API_URL}/trips`, requestBody)
-            .then((response) => {
-                // Reset the state to clear the inputs
-                setStartTrip("");
-                setStartTripNum(0);
-                setReview("");
-                setReviewStars("5");
-                setDuration("30");
-                setPeoplesNum("1");
-                redirect(`/trips/user/${userId}`);
-                
-            })
-            .catch((error) => console.log(error));
-            } else {
+        if (startTrip && startTime && !busy) {
+            setIsBusy([...isBusy, startTrip.valueOf()]);
+            const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
+console.log(isBusy);
+            axios
+                .post(`${API_URL}/trips`, requestBody)
+                .then((response) => {
+                    // Reset the state to clear the inputs
+                    setStartTrip("");
+                    setStartTripNum(0);
+                    setReview("");
+                    setReviewStars("5");
+                    setDuration("30");
+                    setPeoplesNum("1");
+
+
+                })
+                .catch((error) => console.log(error));
+            const busyAircraft = { isBusy };
+            axios
+                .put(`${API_URL}/aircrafts/${aircraftId}`, busyAircraft)
+                .then((response) => {
+                    //console.log(response)
+                    redirect(`/trips/user/${userId}`);
+                })
+                .catch((err) => console.log(err));
+        } else if (busy) {
+            return setMessage("We are sorry.. air craft is busy at this time, please choose another taking off time.");
+        } else {
             return setMessage("Please set the departure time according to the schedule.");
-            }
+        }
     };
 
 
@@ -77,7 +92,7 @@ function CreateTrip(props) {
             <p><span>{timetable[0]}</span>||<span>{timetable[1]}</span>||<span>{timetable[2]}</span></p>
             <form onSubmit={handleSubmit}>
                 <label>Start Trip:</label>
-               
+
                 <DateTimePicker onChange={setStartTrip} value={startTrip} />
 
                 <label>Duration:</label>
@@ -98,10 +113,11 @@ function CreateTrip(props) {
                     onChange={(e) => setPeoplesNum(e.target.value)}
                 />
 
-                <button type="submit" onClick={() => { 
-                    setStartTripNum(startTrip.valueOf()); 
+                <button type="submit" onClick={() => {
+                    setStartTripNum(startTrip.valueOf());
+                    //setIsBusy([...isBusy, startTrip.valueOf()]);
                     //console.log(startTrip.toLocaleTimeString());
-                    }}>Add Trip</button>
+                }}>Add Trip</button>
             </form>
         </div>
     );
