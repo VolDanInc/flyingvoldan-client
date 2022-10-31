@@ -50,16 +50,18 @@ function CreateTrip(props) {
         //let busy = isBusy.includes(startTrip.valueOf());
         let startTime = timetable.includes(startTrip.toLocaleTimeString());
 
+
         if (startTrip && startTime && !message) {
             //setIsBusy([...isBusy, startTripNum]);
             //console.log(startTripNum);
+           
             const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
             
             axios
                 .post(`${API_URL}/trips`, requestBody)
                 .then((response) => {
                     // Reset the state to clear the inputs
-                    console.log(isBusy);
+                    
                     setStartTrip("");
                     setStartTripNum(0);
                     setReview("");
@@ -70,6 +72,7 @@ function CreateTrip(props) {
 
                 })
                 .catch((error) => console.log(error));
+            
             const busyAircraft = { isBusy };
             axios
                 .put(`${API_URL}/aircrafts/${aircraftId}`, busyAircraft)
@@ -80,9 +83,12 @@ function CreateTrip(props) {
                 .catch((err) => console.log(err));
         } else if (!message) {
             setMessage("Please set the departure time according to the schedule.");
+            console.log("Message timetable.....");
+            
         } else {
             console.log("Message busy.....");
-            setIsBusy([]);
+            //setIsBusy([]);
+            
         }
     };
     function refreshPage() {
@@ -123,12 +129,13 @@ function CreateTrip(props) {
                 />
 
                 <button type="submit" onClick={() => {
+                    setMessage("");
                     setStartTripNum(startTrip.valueOf());
                     if (!isBusy.includes(startTrip.valueOf())) {
                         setIsBusy([...isBusy, startTrip.valueOf()]);
                     } else {
                         setMessage("We are sorry.. air craft is busy at this time, please choose another taking off time.");
-                        refreshPage();
+                        //refreshPage();
                     }
 
 
