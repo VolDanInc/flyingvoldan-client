@@ -51,6 +51,7 @@ function CreateTrip(props) {
 
         if (startTrip && startTime && !busy) {
             setIsBusy([...isBusy, startTrip.valueOf()]);
+            console.log(startTrip.valueOf());
             const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
 console.log(isBusy);
             axios
@@ -63,7 +64,7 @@ console.log(isBusy);
                     setReviewStars("5");
                     setDuration("30");
                     setPeoplesNum("1");
-
+                    
 
                 })
                 .catch((error) => console.log(error));
