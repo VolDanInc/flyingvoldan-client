@@ -36,7 +36,7 @@ function CreateTrip(props) {
 
                 const oneAircraft = response.data;
                 setTimetable(oneAircraft.timetable);
-                //setIsBusy(oneAircraft.isBusy);
+                setIsBusy(oneAircraft.isBusy);
             })
             .catch((error) => console.log(error));
 
@@ -44,27 +44,29 @@ function CreateTrip(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         //console.log(timetable);
         //console.log(startTrip.toLocaleTimeString());
-        let busy = isBusy.includes(startTrip.valueOf());
+        //let busy = isBusy.includes(startTrip.valueOf());
         let startTime = timetable.includes(startTrip.toLocaleTimeString());
 
-        if (startTrip && startTime && !busy) {
-            setIsBusy([...isBusy, startTrip.valueOf()]);
-            console.log(startTrip.valueOf());
+        if (startTrip && startTime && !message) {
+            //setIsBusy([...isBusy, startTripNum]);
+            //console.log(startTripNum);
             const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
-console.log(isBusy);
+            
             axios
                 .post(`${API_URL}/trips`, requestBody)
                 .then((response) => {
                     // Reset the state to clear the inputs
+                    console.log(isBusy);
                     setStartTrip("");
                     setStartTripNum(0);
                     setReview("");
                     setReviewStars("5");
                     setDuration("30");
                     setPeoplesNum("1");
-                    
+
 
                 })
                 .catch((error) => console.log(error));
@@ -76,13 +78,19 @@ console.log(isBusy);
                     redirect(`/trips/user/${userId}`);
                 })
                 .catch((err) => console.log(err));
-        } else if (busy) {
-            return setMessage("We are sorry.. air craft is busy at this time, please choose another taking off time.");
+        } else if (!message) {
+            setMessage("Please set the departure time according to the schedule.");
         } else {
-            return setMessage("Please set the departure time according to the schedule.");
+            console.log("Message busy.....");
+            setIsBusy([]);
         }
     };
-
+    function refreshPage() {
+        setTimeout(()=>{
+            window.location.reload(false);
+        }, 3000);
+        console.log('page to reload')
+    }
 
     return (
         <div className="AddTrip">
@@ -116,7 +124,14 @@ console.log(isBusy);
 
                 <button type="submit" onClick={() => {
                     setStartTripNum(startTrip.valueOf());
-                    //setIsBusy([...isBusy, startTrip.valueOf()]);
+                    if (!isBusy.includes(startTrip.valueOf())) {
+                        setIsBusy([...isBusy, startTrip.valueOf()]);
+                    } else {
+                        setMessage("We are sorry.. air craft is busy at this time, please choose another taking off time.");
+                        refreshPage();
+                    }
+
+
                     //console.log(startTrip.toLocaleTimeString());
                 }}>Add Trip</button>
             </form>
