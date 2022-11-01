@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
 import { Form, Link } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
-
+import video from "../styles/video.mp4"
 import { Container } from 'react-bootstrap';
 
 
@@ -41,9 +41,19 @@ function HomePage() {
             {/* <Navbar pageWrapId={"page-wrap"} outerContainerId={"App"} />
             <div id="page-wrap"> */}
 
-            {/* <div className='ratio ratio-16x9'>
-            <video src=".public/AircraftsImages/video.mp4" type="video/mp4" id="background-video" loop autoPlay allowFullScreen/>
-            </div> */}
+<div className='ratio ratio-16x9'>
+
+            <video  loop autoPlay muted allowFullScreen id="video">
+            <source src={video} type="video/mp4" />
+           </video>
+           <div className='content'>
+            <h1 id="headline" >THE SKY IS NOT THE LIMIT.</h1>
+            <p id="2nd-headline">EXPERIENCE FLYING LIKE NEVER BEFORE.</p>
+            <p></p>
+            <Button type="button" class="btn btn-outline-warning">EXPLORE</Button>
+           </div>
+           </div>
+          
 
 
 
