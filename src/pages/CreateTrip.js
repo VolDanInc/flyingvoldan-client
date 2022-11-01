@@ -19,6 +19,7 @@ function CreateTrip(props) {
     const [timetable, setTimetable] = useState([]);
     const [isBusy, setIsBusy] = useState([]);
     const [message, setMessage] = useState("");
+    const [seats, setSeats] = useState("");
 
     const { aircraftId } = useParams();
     //const [value, onChange] = useState(new Date());
@@ -37,6 +38,7 @@ function CreateTrip(props) {
                 const oneAircraft = response.data;
                 setTimetable(oneAircraft.timetable);
                 setIsBusy(oneAircraft.isBusy);
+                setSeats(oneAircraft.seats);
             })
             .catch((error) => console.log(error));
 
@@ -68,7 +70,7 @@ function CreateTrip(props) {
                     setReviewStars("5");
                     setDuration("30");
                     setPeoplesNum("1");
-
+                    setSeats(1);
 
                 })
                 .catch((error) => console.log(error));
@@ -91,12 +93,12 @@ function CreateTrip(props) {
             
         }
     };
-    function refreshPage() {
-        setTimeout(()=>{
-            window.location.reload(false);
-        }, 3000);
-        console.log('page to reload')
-    }
+    // function refreshPage() {
+    //     setTimeout(()=>{
+    //         window.location.reload(false);
+    //     }, 3000);
+    //     console.log('page to reload')
+    // }
 
     return (
         <div className="AddTrip">
@@ -123,7 +125,7 @@ function CreateTrip(props) {
                     type="number"
                     name="peoplesNum"
                     min="1"
-                    max="10"
+                    max={seats}
                     value={peoplesNum}
                     onChange={(e) => setPeoplesNum(e.target.value)}
                 />

@@ -7,7 +7,7 @@ import { AuthContext } from '../context/auth.context';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-
+import '../styles/LoginSignup.css';
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
@@ -71,11 +71,16 @@ function LoginPage(props) {
       <Link to={"/signup"}> Sign Up</Link>*/}
 
       <Form
-        style={{ width: '60vw', backgroundColor: "#393838", padding: "20px", color: "white", borderRadius: "10px"}}
+        style={{ width: '60vw', 
+        backgroundColor: "#393838", 
+        padding: "20px", 
+        color: "white", 
+        borderRadius: "10px",
+        marginTop: "10%"
+      }}
         onSubmit={handleLoginSubmit}
       >
-
-        <FloatingLabel
+        <FloatingLabel 
           controlId="floatingInput"
           label="Email address"
           className="mb-3"
@@ -86,14 +91,14 @@ function LoginPage(props) {
           We'll never share your email with anyone else.
         </Form.Text>
 
-        <FloatingLabel controlId="floatingPassword" label="Password">
+        <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3" >
           <Form.Control type="password" value={password} onChange={handlePassword} />
         </FloatingLabel>
-
+        <div className="error-message">{errorMessage}</div>
         <Button variant="outline-secondary" type="submit" >
           Login
         </Button>
-        <p>Don't have an account yet?</p>
+        <li>Don't have an account yet?</li>
         <Link className="btn btn-outline-secondary" to={"/signup"} role="button"> Sign Up </Link>
       </Form>
 

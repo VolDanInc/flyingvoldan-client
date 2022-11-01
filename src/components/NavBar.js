@@ -8,7 +8,7 @@ import { Button } from "react-bootstrap";
 // import RadiumLink from 
 function Navbar(props) {
 
-  
+
   const {
     isLoggedIn,
     user,
@@ -19,45 +19,47 @@ function Navbar(props) {
   return (
 
 
-<Menu {...props} left isOpen ={false} >
+    <Menu {...props} left isOpen={false} >
 
-    
-    {/* <nav className="nav" id = "nav"> */}
+
+      {/* <nav className="nav" id = "nav"> */}
       <Link to="/" className="menu-item" > Home </Link>
       <Link to={`/trips/comments`} className="menu-item">View comments </Link>
       {user
-        ? user._id && 
+        ? user._id &&
         <Link to={`/trips/user/${user._id}`} className="menu-item"> Trips history</Link>
         : <></>
       }
 
       {isLoggedIn && (
-        <div className="menu-item">
-          <Link onClick={logOutUser} id="logout-btn" className="menu-item">Logout</Link>
-          <p></p>
-         
-        </div>
+
+        <Link onClick={logOutUser} id="logout-btn" className="menu-item">Logout</Link>
+
+
+
       )}
 
       {!isLoggedIn && (
-        <>
-          <Link to="/signup" className="menu-item">Sign Up </Link>
-          <Link to="/login" className="menu-item"> Login </Link>
-        </>
+
+        <Link to="/signup" className="menu-item">Sign Up </Link>
       )}
+      {!isLoggedIn && (
+        <Link to="/login" className="menu-item"> Login </Link>
+      )}
+
 
       {user
         ? user.isAdmin && (
-          <>
-            <Link to="/aircrafts/create" className="menu-item"> New aircraft </Link>
-            
-          </>
+
+          <Link to="/aircrafts/create" className="menu-item"> New aircraft </Link>
+
+
         )
         : (<></>)}
 
-    {/* </nav> */}
+      {/* </nav> */}
     </Menu>
-  
+
   );
 }
 
