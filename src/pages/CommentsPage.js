@@ -52,7 +52,7 @@ function CommentsPage() {
                         // </div>
                         <Card
                             bg='dark'
-                            key='Dark'
+                            key={index}
                             text='white'
                             // style={{ width: '18rem' }}
                             className="mb-2"

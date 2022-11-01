@@ -111,7 +111,7 @@ function HomePage() {
                         // </div>
                         <Card
                             bg='dark'
-                            key='Dark'
+                            key={index}
                             text='white'
                             style={{ width: '18rem' }}
                             className="mb-2"
@@ -125,10 +125,10 @@ function HomePage() {
                                 <Card.Text>
                                     Seats: {aircraft.seats}
                                 </Card.Text>
-                                <Link class="btn btn-outline-secondary" to={`/aircrafts/${aircraft._id}`} role="button"> Details</Link>
+                                <Link className="btn btn-outline-secondary" to={`/aircrafts/${aircraft._id}`} role="button"> Details</Link>
                                 {user
-                                    ? (user.isAdmin ? <Link class="btn outline-secondary" to={`/aircrafts/edit/${aircraft._id}`} role="button">Edit</Link> :
-                                        <Link class="btn btn-outline-secondary" to={`/trips/create/${aircraft._id}`} role="button">Book trip</Link>)
+                                    ? (user.isAdmin ? <Link className="btn btn-outline-secondary" to={`/aircrafts/edit/${aircraft._id}`} role="button">Edit</Link> :
+                                        <Link className="btn btn-outline-secondary" to={`/trips/create/${aircraft._id}`} role="button">Book trip</Link>)
                                     : <></>}
                             </Card.Body>
                         </Card>
