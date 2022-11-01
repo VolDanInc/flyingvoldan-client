@@ -5,7 +5,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import DateTimePicker from 'react-datetime-picker';
-const API_URL = "http://localhost:5005";
+
 
 
 function CreateTrip(props) {
@@ -31,7 +31,7 @@ function CreateTrip(props) {
 
     useEffect(() => {
         axios
-            .get(`${API_URL}/aircrafts/${aircraftId}`)
+            .get(`${process.env.REACT_APP_API_URL}/aircrafts/${aircraftId}`)
             .then((response) => {
 
                 const oneAircraft = response.data;
@@ -58,7 +58,7 @@ function CreateTrip(props) {
             const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
             
             axios
-                .post(`${API_URL}/trips`, requestBody)
+                .post(`${process.env.REACT_APP_API_URL}/trips`, requestBody)
                 .then((response) => {
                     // Reset the state to clear the inputs
                     
@@ -75,7 +75,7 @@ function CreateTrip(props) {
             
             const busyAircraft = { isBusy };
             axios
-                .put(`${API_URL}/aircrafts/${aircraftId}`, busyAircraft)
+                .put(`${process.env.REACT_APP_API_URL}/aircrafts/${aircraftId}`, busyAircraft)
                 .then((response) => {
                     //console.log(response)
                     redirect(`/trips/user/${userId}`);

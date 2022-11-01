@@ -2,7 +2,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-const API_URL = "http://localhost:5005";
+
 
 function EditAircraftPage(props) {
 
@@ -19,7 +19,7 @@ function EditAircraftPage(props) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/aircrafts/${aircraftId}`)
+      .get(`${process.env.REACT_APP_API_URL}/aircrafts/${aircraftId}`)
       .then((response) => {
 
         const oneAircraft = response.data;
@@ -42,7 +42,7 @@ function EditAircraftPage(props) {
 
     //UPDATE:
     axios
-      .put(`${API_URL}/aircrafts/${aircraftId}`, requestBody)
+      .put(`${process.env.REACT_APP_API_URL}/aircrafts/${aircraftId}`, requestBody)
       .then((response) => {
         console.log(response)
 
@@ -57,7 +57,7 @@ function EditAircraftPage(props) {
   const deleteAircraft = () => {
     //DELETE: 
     axios
-      .delete(`${API_URL}/aircrafts/${aircraftId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/aircrafts/${aircraftId}`)
       .then(() => {
 
         navigate("/");

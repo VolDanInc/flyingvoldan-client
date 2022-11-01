@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-const API_URL = "http://localhost:5005";
+
 
 function AircraftDetailsPage(props) {
     const [aircraft, setAircraft] = useState(null);
@@ -11,7 +11,7 @@ function AircraftDetailsPage(props) {
 
     const getAircraft = () => {
      //   const storedToken = localStorage.getItem ("authToken")
-        axios.get(`${API_URL}/aircrafts/${aircraftId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/aircrafts/${aircraftId}`)
        // {headers: {Authorization: `Bearer ${storedToken}` }} )
         .then((response) => {
             const oneAircraft = response.data;

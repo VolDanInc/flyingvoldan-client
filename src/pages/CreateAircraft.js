@@ -12,7 +12,7 @@ function CreateAircraft(props) {
   const [isBusy, setIsBusy] = useState([]);
   const navigate = useNavigate();
 
-  const API_URL = "http://localhost:5005";
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -20,7 +20,7 @@ function CreateAircraft(props) {
     const requestBody = { name, img, description, price, seats, timetable, isBusy };
     const storedToken = localStorage.getItem('authToken');
     axios.post(
-      `${API_URL}/aircrafts`,
+      `${process.env.REACT_APP_API_URL}/aircrafts`,
       requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )

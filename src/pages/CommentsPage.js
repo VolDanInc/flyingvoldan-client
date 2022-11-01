@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 //import { Link, useNavigate } from "react-router-dom";
 //import { AuthContext } from '../context/auth.context';
 
-const API_URL = "http://localhost:5005";
+
 
 function CommentsPage() {
 
@@ -22,7 +22,7 @@ function CommentsPage() {
 
     const getTrips = () => {
 
-        axios.get(`${API_URL}/trips/comments`)
+        axios.get(`${process.env.REACT_APP_API_URL}/trips/comments`)
             .then((response) => {
                 console.log(response.data);
                 setTripsArr(response.data);

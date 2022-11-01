@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from '../context/auth.context';
 
-const API_URL = "http://localhost:5005";
+
 
 function TripsPage() {
 
@@ -18,7 +18,7 @@ function TripsPage() {
 
     const getTrips = () => {
 
-        axios.get(`${API_URL}/trips/user/${userId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/trips/user/${userId}`)
             .then((response) => {
                 //console.log(response.data);
                 setTripsArr(response.data);

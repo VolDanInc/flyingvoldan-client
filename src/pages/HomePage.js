@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 //import CreateAircraft from './CreateAircraft';
 
-const API_URL = "http://localhost:5005";
+
 
 function HomePage() {
     //const {aircraftId} = useParams();
@@ -21,7 +21,7 @@ function HomePage() {
 
 
     const fetchAircrafts = () => {
-        axios.get(`${API_URL}/aircrafts`)
+        axios.get(`${process.env.REACT_APP_API_URL}/aircrafts`)
             .then((response) => {
                 //console.log(response);
                 const newAircrafts = response.data;
