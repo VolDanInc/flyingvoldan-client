@@ -26,6 +26,7 @@ function TripsPage() {
             .catch((error) => {
                 const errorDescription = error.response.data.message;
                 setErrorMessage(errorDescription);
+               
             })
     };
 

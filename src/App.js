@@ -1,14 +1,13 @@
 // src/App.js
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
+import './styles/Homepage.css';
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import TripsPage from "./pages/TripsPage";
 import CommentsPage from "./pages/CommentsPage";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar";
-import DateTime from "./components/DateTime";
-import DTPicker from "./components/DTPicker";
+
 import CreateAircraft from './pages/CreateAircraft';
 import EditAircraftPage from './pages/EditAircraftPage';
 import CreateTrip from './pages/CreateTrip';
@@ -20,9 +19,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {/* <CreateAircraft/> */}
-      {/* <DateTime />
-      <DTPicker /> */}
+     
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/trips/user/:userId" element={<TripsPage />} />

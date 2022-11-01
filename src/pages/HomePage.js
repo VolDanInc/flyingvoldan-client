@@ -1,9 +1,10 @@
-//import { getActiveElement } from '@testing-library/user-event/dist/utils';
+import Navbar from '../components/NavBar';
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
-//import CreateAircraft from './CreateAircraft';
+import { Container } from 'react-bootstrap';
+
 const API_URL = "http://localhost:5005";
 
 function HomePage() {
@@ -30,11 +31,20 @@ function HomePage() {
         //console.log('i fire once')
     }, []);
     return (
-        <div className="HomePage">
+        <div id="App" >
+            {/* <Navbar pageWrapId={"page-wrap"} outerContainerId={"App"} />
+            <div id="page-wrap"> */}
+               
+                    {/* <div className='ratio ratio-16x9'>
+            <video src=".public/AircraftsImages/video.mp4" type="video/mp4" id="background-video" loop autoPlay allowFullScreen/>
+            </div> */}
+            
+  
+
+
             <h1>Choose aircraft</h1>
            
-            {/* <CreateAircraft refreshAircrafts = {fetchAircrafts} /> */}
-        
+            
         {
             aircrafts.map((aircraft, index) => {
                 return (
@@ -62,10 +72,11 @@ function HomePage() {
                 );
             })
         }
+      
         </div>
             
            
-        
+        // </div>   
     )
 }
 
