@@ -1,55 +1,67 @@
 // src/components/Navbar.js
-
+import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { slide as Menu } from "react-burger-menu";
+import { Button } from "react-bootstrap";
+// import RadiumLink from 
+function Navbar(props) {
 
-function Navbar() {
+  
   const {
     isLoggedIn,
     user,
     logOutUser
   } = useContext(AuthContext);
 
+
   return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-      <Link to={`/trips/comments`}> <button>View comments</button> </Link>
+
+
+<Menu {...props} left isOpen ={false} >
+
+    
+    {/* <nav className="nav" id = "nav"> */}
+      <Link to="/" className="menu-item" > Home </Link>
+      <Link to={`/trips/comments`} className="menu-item">View comments </Link>
       {user
         ? user._id && 
-        <Link to={`/trips/user/${user._id}`}>
-          <button>Trips history</button>
-        </Link>
+        <Link to={`/trips/user/${user._id}`} className="menu-item"> Trips history</Link>
         : <></>
       }
 
       {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
-          <span>Hello {user && user.name}!</span>
-        </>
+        <div className="menu-item">
+          <Link onClick={logOutUser} id="logout-btn" className="menu-item">Logout</Link>
+          <p></p>
+         
+        </div>
       )}
 
       {!isLoggedIn && (
         <>
-          <Link to="/signup"> <button>Sign Up</button> </Link>
-          <Link to="/login"> <button>Login</button> </Link>
+          <Link to="/signup" className="menu-item">Sign Up </Link>
+          <Link to="/login" className="menu-item"> Login </Link>
         </>
       )}
 
       {user
         ? user.isAdmin && (
           <>
-            <Link to="/aircrafts/create"> <button>New aircraft</button> </Link>
+            <Link to="/aircrafts/create" className="menu-item"> New aircraft </Link>
             
           </>
         )
         : (<></>)}
 
-    </nav>
+    {/* </nav> */}
+    </Menu>
+  
   );
 }
+
+
+
 
 export default Navbar;

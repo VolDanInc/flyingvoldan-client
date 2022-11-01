@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthProviderWrapper } from "./context/auth.context";
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //console.log("i'm here");
 root.render(
