@@ -51,19 +51,23 @@ function CreateTrip(props) {
         let startTime = timetable.includes(startTrip.toLocaleTimeString());
 
 
+
 console.log(startTime)
 console.log(startTrip)
 console.log(message)
+
+
         if (startTrip && startTime && !message) {
             //setIsBusy([...isBusy, startTripNum]);
             //console.log(startTripNum);
+           
             const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
             
             axios
                 .post(`${API_URL}/trips`, requestBody)
                 .then((response) => {
                     // Reset the state to clear the inputs
-                    console.log(isBusy);
+                    
                     setStartTrip("");
                     setStartTripNum(0);
                     setReview("");
@@ -74,6 +78,7 @@ console.log(message)
 
                 })
                 .catch((error) => console.log(error));
+
             // const busyAircraft = { isBusy };
             // axios
             //     .put(`${API_URL}/aircrafts/${aircraftId}`, busyAircraft)
@@ -82,11 +87,25 @@ console.log(message)
             //         redirect(`/trips/user/${userId}`);
             //     })
             //     .catch((err) => console.log(err));
+
+            
+            const busyAircraft = { isBusy };
+            axios
+                .put(`${API_URL}/aircrafts/${aircraftId}`, busyAircraft)
+                .then((response) => {
+                    //console.log(response)
+                    redirect(`/trips/user/${userId}`);
+                })
+                .catch((err) => console.log(err));
+
         } else if (!message) {
             setMessage("Please set the departure time according to the schedule.");
+            console.log("Message timetable.....");
+            
         } else {
             console.log("Message busy.....");
-            setIsBusy([]);
+            //setIsBusy([]);
+            
         }
     };
     function refreshPage() {
@@ -127,12 +146,13 @@ console.log(message)
                 />
 
                 <button type="submit" onClick={() => {
+                    setMessage("");
                     setStartTripNum(startTrip.valueOf());
                     if (!isBusy.includes(startTrip.valueOf())) {
                         setIsBusy([...isBusy, startTrip.valueOf()]);
                     } else {
                         setMessage("We are sorry.. air craft is busy at this time, please choose another taking off time.");
-                        refreshPage();
+                        //refreshPage();
                     }
 
 

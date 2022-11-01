@@ -1,6 +1,11 @@
 // src/App.js
 import { Routes, Route } from 'react-router-dom';
+
 import './styles/Homepage.css';
+
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import TripsPage from "./pages/TripsPage";

@@ -38,7 +38,7 @@ function EditProjectPage(props) {
     const handleFormSubmit = (e) => {                     // <== ADD
         e.preventDefault();
         // Create an object representing the body of the PUT request
-        const requestBody = { startTrip, duration };
+        const requestBody = { startTrip, duration, peoplesNum };
 
         // Make a PUT request to update the project
         axios
@@ -65,15 +65,16 @@ function EditProjectPage(props) {
       return (
         <div className="EditTrip">
             <h3>Edit Trip</h3>
-
+<p>You can not change start time here, please cansel this booking and create new!</p>
             <form onSubmit={handleFormSubmit}>
-                <label>Start Trip:</label>
-                <input
+                <label>Start Trip: <span>{startTrip}</span></label>
+                
+                {/* <input
                     type="text"
                     name="startTrip"
                     value={startTrip}
                     onChange={(e) => setStartTrip(e.target.value)}
-                />
+                /> */}
 
 
                 <label>Duration:</label>
