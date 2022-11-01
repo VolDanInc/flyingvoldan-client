@@ -1,4 +1,4 @@
-
+// src/pages/CreateTrip.js
 
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
@@ -51,12 +51,6 @@ function CreateTrip(props) {
         let startTime = timetable.includes(startTrip.toLocaleTimeString());
 
 
-
-console.log(startTime)
-console.log(startTrip)
-console.log(message)
-
-
         if (startTrip && startTime && !message) {
             //setIsBusy([...isBusy, startTripNum]);
             //console.log(startTripNum);
@@ -78,16 +72,6 @@ console.log(message)
 
                 })
                 .catch((error) => console.log(error));
-
-            // const busyAircraft = { isBusy };
-            // axios
-            //     .put(`${API_URL}/aircrafts/${aircraftId}`, busyAircraft)
-            //     .then((response) => {
-            //         //console.log(response)
-            //         redirect(`/trips/user/${userId}`);
-            //     })
-            //     .catch((err) => console.log(err));
-
             
             const busyAircraft = { isBusy };
             axios
@@ -97,7 +81,6 @@ console.log(message)
                     redirect(`/trips/user/${userId}`);
                 })
                 .catch((err) => console.log(err));
-
         } else if (!message) {
             setMessage("Please set the departure time according to the schedule.");
             console.log("Message timetable.....");
@@ -135,7 +118,7 @@ console.log(message)
                     <option value="120" >120</option>
                 </select>
 
-                <label>Number of people:</label>
+                <label>Peoples number:</label>
                 <input
                     type="number"
                     name="peoplesNum"
