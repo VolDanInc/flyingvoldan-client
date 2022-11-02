@@ -29,14 +29,21 @@ function Navbar(props) {
           <Link to={`/trips/user/${user._id}`} className="menu-item"> Trips history</Link>
           : <></>
         }
+ {user
+          ? user.isAdmin && (
 
+            <Link to="/aircrafts/create" className="menu-item"> New aircraft </Link>
+
+
+          )
+          : (<></>)}
         {isLoggedIn && (
 
           <Link onClick={logOutUser} id="logout-btn" className="menu-item">Logout</Link>
 
-
-
         )}
+
+
 
         {!isLoggedIn && (
 
@@ -47,14 +54,7 @@ function Navbar(props) {
         )}
 
 
-        {user
-          ? user.isAdmin && (
-
-            <Link to="/aircrafts/create" className="menu-item"> New aircraft </Link>
-
-
-          )
-          : (<></>)}
+       
 
         {/* </nav> */}
       </Menu>

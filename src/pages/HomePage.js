@@ -52,7 +52,7 @@ function HomePage() {
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '28rem' }}
+                            style={{ width: '28rem'}}
                             className="mb-2"
                             
                             
