@@ -4,11 +4,10 @@
     /* position: absolute; */
   }
   html,
-  body{
-    margin:0;
-  
-  }
 
+.navbar{
+  margin-top: 0;
+}
   .home{
    text-align: center;
 padding-top: 3%;
@@ -38,7 +37,15 @@ padding-top: 3%;
   height: 15vw;
   object-fit: cover;
 } 
+.overflow-scroll{
+    max-height: 100px;
+    overflow-y: auto;
+}
 
+#rating{
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
 
   #page-wrap {
     text-align: center;

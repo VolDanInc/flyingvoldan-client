@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { FormControl } from "react-bootstrap";
 //import { Link, useNavigate } from "react-router-dom";
 //import { AuthContext } from '../context/auth.context';
 
@@ -47,21 +48,24 @@ let updateDate = "";
                             bg='dark'
                             key={index}
                             text='white'
-                            // style={{ width: '18rem' }}
+                            style={{ width: '48rem'}}
                             className="mb-2"
                         >
                             <Card.Header>Created by: {trip.userId.name}</Card.Header>
                             <Card.Body>
                                 <Card.Title>Aircraft: {trip.aircraftId.name}</Card.Title>
-                                <Card.Text>
+                             
+                                <Card.Text className="overflow-scroll" >
                                     Comment: {trip.review}
                                 </Card.Text>
+                              
+                               
                                 <Button variant="outline-secondary">Like</Button>
                                 <Button variant="outline-secondary">Unlike</Button>
                             </Card.Body>
                             <Card.Footer className="text-muted">
-                                <p>Rating: {trip.reviewStars}</p>
-                                <p>Created: {updateDate[0]} at {updateDate[1]}</p>
+                            <Card.Text id="rating">Rating: {trip.reviewStars} </Card.Text>
+                            <Card.Text>Created: {updateDate[0]} at {updateDate[1]}</Card.Text>
                             </Card.Footer>
                         </Card>
 
