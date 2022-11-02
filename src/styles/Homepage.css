@@ -147,4 +147,5 @@ padding-top: 3%;
 .forms {
   display: flex;
   justify-content: center;
+  text-align: center;
 }

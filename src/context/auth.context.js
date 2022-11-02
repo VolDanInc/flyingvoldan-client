@@ -57,10 +57,11 @@ function AuthProviderWrapper(props) {
 
     const logOutUser = () => {                   // <== ADD    
         // To log out the user, remove the token
-        //console.log('I remove token...');
+        
         removeToken();
         // and update the state variables    
         authenticateUser();
+        console.log('I remove token...');
         redirect("/");
     }
 

@@ -3,8 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";  //  <== IMPORT
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-
-
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 function EditTrip(props) {
     const [startTrip, setStartTrip] = useState("");
@@ -64,35 +68,53 @@ function EditTrip(props) {
             .catch((err) => console.log(err));
     };
     let startAt = "";
+    startAt = startTrip.slice(0, 16).split('T')
     return (
-        
+
         <div className="forms">
-            {startAt = startTrip.slice(0, 16).split('T')}
-            <h3>Edit Trip</h3>
-            <p>You can not change start time here, please cansel this booking and create new!</p>
-            <form onSubmit={handleFormSubmit}>
-                <label>Start Trip: <span>{startAt[0]} at {startAt[1]}</span></label>
-                <label>Duration:</label>
-                <select name="duration" value={duration} onChange={(e) => setDuration(e.target.value)}>
-                    <option value="30" >30</option>
-                    <option value="60" >60</option>
-                    <option value="90" >90</option>
-                    <option value="120" >120</option>
-                </select>
 
-                <label>Peoples number:</label>
-                <input
-                    type="number"
-                    name="peoplesNum"
-                    min="1"
-                    max={aircraftId.seats}
-                    value={peoplesNum}
-                    onChange={(e) => setPeoplesNum(e.target.value)}
-                />
+            <Form onSubmit={handleFormSubmit}
+                style={{
+                    width: '60vw',
+                    backgroundColor: "#393838",
+                    padding: "20px",
+                    borderRadius: "10px",
+                    marginTop: "10%"
+                }}>
+                <Form.Text className="text-light"><h3>Edit Trip</h3></Form.Text>
+                <Form.Text className="text-light">You can not change start time here, please cancel this booking and create new!</Form.Text>
 
-                <button type="submit">Save changes</button>
-                <button onClick={deleteTrip}>Delete Trip</button>
-            </form>
+                <Row>
+                    <Col>
+                        <Card className="mb-3">
+                            <Form.Text>Start Trip:</Form.Text>
+                            <span>{startAt[0]} at {startAt[1]}</span>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <FloatingLabel controlId="floatingDuration" label="Duration:" className="mb-3">
+                            <Form.Select value={duration} onChange={(e) => setDuration(e.target.value)}>
+                                <option value="30" >30</option>
+                                <option value="60" >60</option>
+                                <option value="90" >90</option>
+                                <option value="120" >120</option>
+                            </Form.Select>
+                        </FloatingLabel>
+                    </Col>
+                    <Col>
+                        <FloatingLabel controlId="floatingDatePeople" label="Peoples number:" className="mb-3">
+                            <Form.Control type="number"
+                                min="1"
+                                max={aircraftId.seats}
+                                value={peoplesNum}
+                                onChange={(e) => setPeoplesNum(e.target.value)} />
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Button variant="outline-secondary" type="submit">Save changes</Button>
+            </Form>
+
+
         </div>
     );
 }

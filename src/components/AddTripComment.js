@@ -48,7 +48,11 @@ function AddTripComment(props) {
         <div className="forms">
             
             <Form onSubmit={handleFormSubmit}
-                style={{ width: '60vw', backgroundColor: "#393838", padding: "20px", borderRadius: "10px" }}>
+                style={{ width: '60vw', 
+                backgroundColor: "#393838", 
+                padding: "20px", 
+                borderRadius: "10px", 
+                marginTop: "10%" }}>
                 <Form.Text className="text-light"><h3>Your review</h3></Form.Text>
 
 

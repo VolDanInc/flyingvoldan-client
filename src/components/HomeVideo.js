@@ -15,7 +15,7 @@ function HomeVideo() {
                     <h1 id="headline" >THE SKY IS NOT THE LIMIT.</h1>
                     <p id="2nd-headline">EXPERIENCE FLYING LIKE NEVER BEFORE.</p>
                     <p></p>
-                    <Button type="button" class="btn btn-outline-warning">EXPLORE</Button>
+                    <Button type="button" className="btn btn-outline-warning">EXPLORE</Button>
                 </div>
             </div>
             

@@ -46,7 +46,7 @@ function HomePage() {
                     return (
                         
                         
-                        <div class="unit">
+                        <div className="unit">
 
                         <Card
                             bg='dark'

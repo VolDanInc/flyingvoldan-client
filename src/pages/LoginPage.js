@@ -54,6 +54,7 @@ function LoginPage(props) {
       }}
         onSubmit={handleLoginSubmit}
       >
+        <h2>Login</h2>
         <FloatingLabel 
           controlId="floatingInput"
           label="Email address"

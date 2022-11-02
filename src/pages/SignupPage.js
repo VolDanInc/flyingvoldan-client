@@ -38,11 +38,17 @@ function SignupPage(props) {
   };
   return (
     <div className="forms">
-      <h1>Sign Up</h1>
+      
       <Form
-        style={{ width: '60vw', backgroundColor: "#393838", padding: "20px", color: "white", borderRadius: "10px" }}
+        style={{ width: '60vw',
+        backgroundColor: "#393838", 
+        padding: "20px", 
+        color: "white", 
+        borderRadius: "10px", 
+        marginTop: "10%" }}
         onSubmit={handleSignupSubmit}
       >
+        <h2>Sign Up</h2>
         <FloatingLabel
           controlId="floatingInput"
           label="Email address"
@@ -50,8 +56,6 @@ function SignupPage(props) {
         >
           <Form.Control type="email" value={email} onChange={handleEmail} />
         </FloatingLabel>
-
-
         <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3">
           <Form.Control type="password" value={password} onChange={handlePassword} />
         </FloatingLabel>
@@ -66,7 +70,7 @@ function SignupPage(props) {
         <Button variant="outline-secondary" type="submit" >
           Sign Up
         </Button>
-        <li>Already have account?</li>
+        <li>Already have an account?</li>
         <Link className="btn btn-outline-secondary" to={"/login"} role="button"> Login </Link>
       </Form>
 

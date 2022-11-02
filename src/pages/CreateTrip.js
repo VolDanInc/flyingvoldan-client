@@ -1,8 +1,8 @@
 // src/pages/CreateTrip.js
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-//import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useState, useContext, useEffect } from "react";
@@ -10,7 +10,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import DateTimePicker from 'react-datetime-picker';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
 
 
 function CreateTrip(props) {
@@ -103,7 +103,13 @@ function CreateTrip(props) {
         <div className="forms">
 
             <Form onSubmit={handleSubmit}
-            style={{ width: '60vw', backgroundColor: "#393838", padding: "20px", borderRadius: "10px" }}>
+                style={{
+                    width: '60vw',
+                    backgroundColor: "#393838",
+                    padding: "20px",
+                    borderRadius: "10px",
+                    marginTop: "10%"
+                }}>
                 <Form.Text className="text-light"><h3>Add New Trip</h3></Form.Text>
                 <Form.Text className="text-light"><h3>{message}</h3></Form.Text>
                 <Form.Text className="text-light">Daily departure time of this aircraft:</Form.Text>
