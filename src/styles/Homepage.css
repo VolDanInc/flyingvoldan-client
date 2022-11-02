@@ -8,6 +8,38 @@
     margin:0;
   
   }
+
+  .home{
+   text-align: center;
+padding-top: 3%;
+  }
+
+.cards, .centerCard, .home{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: top;
+  justify-content: space-around;
+ padding-top: 3%;
+ padding-bottom: 2%;
+ align-content:space-around;
+ text-align:center
+}
+ .unit{
+  margin-bottom: 2%;
+}
+#cardTitle{
+  font-size: 35px
+}
+#cardDescription{
+  font-size: 20px;
+}
+.cardImg{
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+} 
+
+
   #page-wrap {
     text-align: center;
   
