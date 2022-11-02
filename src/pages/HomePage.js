@@ -38,62 +38,6 @@ function HomePage() {
     }, []);
     return (
         <div className="home" >
-
-        <div id="App" >
-            {/* <Navbar pageWrapId={"page-wrap"} outerContainerId={"App"} />
-            <div id="page-wrap"> */}
-
-<div className='ratio ratio-16x9'>
-
-            <video  loop autoPlay muted allowFullScreen id="video">
-            <source src={video} type="video/mp4" />
-           </video>
-           <div className='content'>
-            <h1 id="headline" >THE SKY IS NOT THE LIMIT !!</h1>
-            <p id="2nd-headline">EXPERIENCE FLYING LIKE NEVER BEFORE.</p>
-            <p></p>
-            <Button type="button" class="btn btn-outline-warning">EXPLORE</Button>
-           </div>
-           </div>
-          
-
-
-
-
-            <h1>Choose aircraft</h1>
-
-
-
-            {/* {
-            aircrafts.map((aircraft, index) => {
-                return (
-                    <div className="card" key={index}>
-                       
-                        <p>Aircraft: {aircraft.name}</p>
-
-                        <img 
-                        width="700" 
-                        height="400"
-                        src={aircraft.img}  onError={({ currentTarget }) => {
-                            currentTarget.onerror = null;
-                            currentTarget.src="https://www.pngitem.com/pimgs/m/119-1197957_lear-jet-clip-arts-liar-jet-icon-png.png";
-                          }}/>
-                
-                        <p>Seats: {aircraft.seats}</p>
-
-                        <Link to={`/aircrafts/${aircraft._id}`}> Details</Link> <> </>
-                        {user 
-                        ? (user.isAdmin ? <Link to={`/aircrafts/edit/${aircraft._id}`}>Edit</Link> : 
-                        <Link to={`/trips/create/${aircraft._id}`}>Book trip</Link>)
-                        : <></>}
-                       
-                    </div>
-                );
-            })
-        }
-      
-        </div>
-
             
             <h1>Choose aircraft</h1>
             {
@@ -134,4 +78,4 @@ function HomePage() {
     )
 }
 
-export default HomePage;
+export default HomePage
