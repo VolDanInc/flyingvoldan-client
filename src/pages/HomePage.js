@@ -5,7 +5,7 @@ import { Form, Link } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
 import video from "../styles/video.mp4"
 import { Container } from 'react-bootstrap';
-
+import Bootstrap from 'react-bootstrap'
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -38,24 +38,31 @@ function HomePage() {
     }, []);
     return (
         <div className="home" >
-            
-            <h1>Choose aircraft</h1>
+         
+            <h1>Choose an aircraft</h1> 
+        <div className="cards">
             {
                 aircrafts.map((aircraft, index) => {
                     return (
+                        
+                        
+                        <div class="unit">
+
                         <Card
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '18rem' }}
+                            style={{ width: '28rem' }}
                             className="mb-2"
+                            
+                            
                         >
-                            <Card.Img variant="top" src={aircraft.img} onError={({ currentTarget }) => {
+                            <Card.Img className="cardImg" variant="top" src={aircraft.img} onError={({ currentTarget }) => {
                                 currentTarget.onerror = null;
                                 currentTarget.src = "https://www.pngitem.com/pimgs/m/119-1197957_lear-jet-clip-arts-liar-jet-icon-png.png";
                             }} />
                             <Card.Body>
-                                <Card.Title>Aircraft: {aircraft.name}</Card.Title>
+                                <Card.Title id="cardTitle">{aircraft.name}</Card.Title>
                                 <Card.Text>
                                     Seats: {aircraft.seats}
                                 </Card.Text>
@@ -65,12 +72,14 @@ function HomePage() {
                                         <Link className="btn btn-outline-secondary" to={`/trips/create/${aircraft._id}`} role="button">Book trip</Link>)
                                     : <></>}
                             </Card.Body>
-                        </Card>
-
+                       </Card> 
+                      </div>
+  
                     );
                 })
             }
-        </div>
+            </div>
+         </div>
 
 
 

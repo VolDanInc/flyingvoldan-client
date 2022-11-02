@@ -91,27 +91,27 @@ function CreateAircraft(props) {
           newTable.splice(0,1,e.target.value); 
           setTimetable(newTable)
           }}>
-          <option value="08:00:00" >8:00</option>
-          <option value="09:00:00" >9:00</option>
-          <option value="10:00:00" >10:00</option>
+          <option value="08:00:00" >8:00 </option>
+          <option value="09:00:00" >9:00 </option>
+          <option value="10:00:00" >10:00 </option>
         </select>
         <select name="timetable" onChange={(e) => {
           const newTable = [...timetable];
           newTable.splice(1,1,e.target.value); 
           setTimetable(newTable)
           }}>
-          <option value="12:00:00" >12:00</option>
-          <option value="13:00:00" >13:00</option>
-          <option value="14:00:00" >14:00</option>
+          <option value="12:00:00" >12:00 </option>
+          <option value="13:00:00" >13:00 </option>
+          <option value="14:00:00" >14:00 </option>
         </select>
         <select name="timetable" onChange={(e) => {
           const newTable = [...timetable];
           newTable.splice(2,1,e.target.value); 
           setTimetable(newTable)
           }}>
-          <option value="16:00:00" >16:00</option>
-          <option value="17:00:00" >17:00</option>
-          <option value="18:00:00" >18:00</option>
+          <option value="16:00:00" >16:00 </option>
+          <option value="17:00:00" >17:00 </option>
+          <option value="18:00:00" >18:00 </option>
         </select>
 
         <button type="submit">Submit</button>
