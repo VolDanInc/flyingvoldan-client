@@ -1,25 +1,19 @@
-import Navbar from '../components/NavBar';
+//import Navbar from '../components/NavBar';
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
-import { Form, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from "../context/auth.context";
-import video from "../styles/video.mp4"
-import { Container } from 'react-bootstrap';
-import Bootstrap from 'react-bootstrap'
-
-import Button from 'react-bootstrap/Button';
+//import video from "../styles/video.mp4"
+//import { Container } from 'react-bootstrap';
+//import Bootstrap from 'react-bootstrap'
+import HomeVideo from "../components/HomeVideo";
+//import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 //import CreateAircraft from './CreateAircraft';
-
-
-
 function HomePage() {
     //const {aircraftId} = useParams();
     const [aircrafts, setAircrafts] = useState([]);
     const { user } = useContext(AuthContext);
-
-
-
     const fetchAircrafts = () => {
         axios.get(`${process.env.REACT_APP_API_URL}/aircrafts`)
             .then((response) => {
@@ -38,24 +32,19 @@ function HomePage() {
     }, []);
     return (
         <div className="home" >
-         
-            <h1>Choose an aircraft</h1> 
+         <HomeVideo />
+             <h1 >Choose an aircraft</h1>
         <div className="cards">
             {
                 aircrafts.map((aircraft, index) => {
                     return (
                         
-                        
-                        <div className="unit">
-
                         <Card
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '28rem'}}
-                            className="mb-2"
-                            
-                            
+                            style={{ width: '32rem'}}
+                            className="mb-4"
                         >
                             <Card.Img className="cardImg" variant="top" src={aircraft.img} onError={({ currentTarget }) => {
                                 currentTarget.onerror = null;
@@ -73,17 +62,13 @@ function HomePage() {
                                     : <></>}
                             </Card.Body>
                        </Card> 
-                      </div>
+                      
   
                     );
                 })
             }
             </div>
          </div>
-
-
-
-
     )
 }
 

@@ -17,7 +17,7 @@ function Navbar(props) {
 
 
   return (
-    <div className="navbar">
+    <div className="nav">
       <Menu {...props} left isOpen={false} >
 
 
@@ -29,7 +29,7 @@ function Navbar(props) {
           <Link to={`/trips/user/${user._id}`} className="menu-item"> Trips history</Link>
           : <></>
         }
- {user
+        {user
           ? user.isAdmin && (
 
             <Link to="/aircrafts/create" className="menu-item"> New aircraft </Link>
@@ -39,7 +39,10 @@ function Navbar(props) {
           : (<></>)}
         {isLoggedIn && (
 
-          <Link onClick={logOutUser} id="logout-btn" className="menu-item">Logout</Link>
+          <Button onClick={logOutUser} 
+          id="logout"
+            
+            >Logout</Button>
 
         )}
 
@@ -54,7 +57,7 @@ function Navbar(props) {
         )}
 
 
-       
+
 
         {/* </nav> */}
       </Menu>

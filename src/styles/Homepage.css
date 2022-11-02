@@ -1,151 +1,172 @@
-
-.App {
-  height: auto;
-    /* position: absolute; */
-  }
-  html,
-
-.navbar{
-  margin-top: 0;
-}
-  .home{
-   text-align: center;
-padding-top: 3%;
-  }
-
-.cards, .centerCard, .home{
+.cards,
+.centerCard {
   display: flex;
   flex-wrap: wrap;
   align-items: top;
   justify-content: space-around;
- padding-top: 3%;
- padding-bottom: 2%;
- align-content:space-around;
- text-align:center
+  padding-top: 3%;
+  padding-bottom: 2%;
+  align-content: space-around;
+  text-align: center;
+  margin-left: 3%;
+  margin-right: 3%;
 }
- .unit{
-  margin-bottom: 2%;
+
+.home {
+  text-align: center;
 }
-#cardTitle{
+
+
+#cardTitle {
   font-size: 35px
 }
-#cardDescription{
+
+#cardDescription {
   font-size: 20px;
 }
-.cardImg{
+
+.cardImg {
   width: 100%;
   height: 15vw;
   object-fit: cover;
-} 
-.overflow-scroll{
-    max-height: 100px;
-    overflow-y: auto;
 }
 
-#rating{
+.overflow-scroll {
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+#rating {
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-  #page-wrap {
-    text-align: center;
-  
-    /* Prevent sidebar from showing a scrollbar on page */
-    overflow: auto;
-  }
-  
-  /* Individual item */
-  .bm-item {
-    display: inline-block;
-  
-    /* Our sidebar item styling */
-    text-decoration: none;
-    margin-bottom: 10px;
-    color: #d1d1d1;
-    transition: color 0.2s;
-    text-align: left;
-  }
-  
-  /* Change color on hover */
-  .bm-item:hover {
-    color: white;
-  }
-  
-  /* The rest copied directly from react-burger-menu docs */
-  
-  /* Position and sizing of burger button */
-  .bm-burger-button {
-    position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 36px;
-    top: 36px;
-  }
-  
-  /* Color/shape of burger icon bars */
-  .bm-burger-bars {
-    background: #373a47;
-  }
-  
-  /* Position and sizing of clickable cross button */
-  .bm-cross-button {
-    height: 24px;
-    width: 24px;
-  }
-  
-  /* Color/shape of close button cross */
-  .bm-cross {
-    background: #bdc3c7;
-  }
-  
-  /* General sidebar styles */
-  .bm-menu {
-    background: #373a47;
-    padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
-  }
-  
-  /* Morph shape necessary with bubble or elastic */
-  .bm-morph-shape {
-    fill: #373a47;
-  }
-  
-  /* Wrapper for item list */
-  .bm-item-list {
-    color: #b8b7ad;
-  }
-  
-  /* Styling of overlay */
-  .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  .content{
-    position: absolute;
-    color:rgba(255, 255, 255, 0.772);
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #headline{
-    font-size: 70px; 
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-  }
-  .content, p{
-    font-size: 25px;
-  }
-/* .overlay{
-  position:absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .4);
-} */
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Our sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #f9f4f4;
+  transition: color 0.2s;
+  text-align: left;
+}
+
+/* Change color on hover */
+.bm-item:hover {
+  color: rgb(118, 118, 116);
+}
+
+/* The rest copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #ecece9;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #7393a1;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.85em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.content {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.772);
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#headline {
+  font-size: 70px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
+
+.content,
+p {
+  font-size: 25px;
+}
+
+/*  */
 .forms {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+.tripsCards {
+  width: 100%;
+  min-height: 470px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.landed {
+  color: rgb(44, 247, 44);
+}
+
+.waiting {
+  color: yellow
+}
+
+.approved {
+  color: orange
+}
+
+#logout {
+  background-color: #7393a1;
+  border: none;
+  color: #f9f4f4;
+  font-size: 28px;
+  padding-left: 0
+}
+#logout:hover {
+  color: rgb(118, 118, 116);
 }

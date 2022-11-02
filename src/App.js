@@ -1,9 +1,7 @@
-// src/App.js
+
 import { Routes, Route } from 'react-router-dom';
 
 import './styles/Homepage.css';
-
-//import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import SignupPage from "./pages/SignupPage";
@@ -27,7 +25,7 @@ function App() {
       <NavBar />
       
       <Routes>
-        <Route path="/" element={<><HomeVideo /><HomePage /></>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/trips/user/:userId" element={<TripsPage />} />
         <Route path="/trips/comments" element={<CommentsPage />} />
         <Route path="/signup" element={<SignupPage />} />

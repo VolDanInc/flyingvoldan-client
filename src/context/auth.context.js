@@ -61,8 +61,9 @@ function AuthProviderWrapper(props) {
         removeToken();
         // and update the state variables    
         authenticateUser();
-        console.log('I remove token...');
+        
         redirect("/");
+        console.log('I remove token...');
     }
 
 
