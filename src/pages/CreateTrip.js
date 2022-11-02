@@ -101,7 +101,7 @@ function CreateTrip(props) {
     // }
 
     return (
-        <div className="AddTrip">
+        <div className="forms">
             <h3>Add New Trip</h3>
             <h3>{message}</h3>
 

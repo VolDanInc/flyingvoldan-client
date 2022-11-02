@@ -36,7 +36,7 @@ function TripsPage() {
     let takeOff = "";
     let createTime = "";
     return (
-        <div className="TripsPage">
+        <div className="home">
             {
                 tripsArr.map((trip, index) => {
                     //console.log(trip.aircraftId);

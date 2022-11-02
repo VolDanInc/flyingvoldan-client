@@ -67,7 +67,7 @@ function EditAircraftPage(props) {
 
 
   return (
-    <div className="EditAircraftPage">
+    <div className="forms">
       <h3>Edit the Aircraft:</h3>
 
       <form onSubmit={handleFormSubmit}>

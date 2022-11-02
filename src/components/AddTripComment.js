@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 
-function EditProjectPage(props) {
+function AddTripComment(props) {
     const { tripId } = useParams();
     const [review, setReview] = useState("");
     const [reviewStars, setReviewStars] = useState("5");
@@ -72,4 +72,4 @@ function EditProjectPage(props) {
     );
 }
 
-export default EditProjectPage;
+export default AddTripComment;

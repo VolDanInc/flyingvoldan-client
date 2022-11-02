@@ -42,7 +42,7 @@ function CreateAircraft(props) {
   };
 
   return (
-    <div className='AddAircraft'>
+    <div className='forms'>
       <h3>Add Aircraft</h3>
 
       <form onSubmit={handleSubmit}>

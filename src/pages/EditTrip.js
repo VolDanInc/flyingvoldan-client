@@ -66,21 +66,12 @@ function EditTrip(props) {
     let startAt = "";
     return (
         
-        <div className="EditTrip">
+        <div className="forms">
             {startAt = startTrip.slice(0, 16).split('T')}
             <h3>Edit Trip</h3>
             <p>You can not change start time here, please cansel this booking and create new!</p>
             <form onSubmit={handleFormSubmit}>
                 <label>Start Trip: <span>{startAt[0]} at {startAt[1]}</span></label>
-
-                {/* <input
-                    type="text"
-                    name="startTrip"
-                    value={startTrip}
-                    onChange={(e) => setStartTrip(e.target.value)}
-                /> */}
-
-
                 <label>Duration:</label>
                 <select name="duration" value={duration} onChange={(e) => setDuration(e.target.value)}>
                     <option value="30" >30</option>

@@ -24,7 +24,7 @@ function AircraftDetailsPage(props) {
       }, [] );
 
   return (
-    <div className='AircraftDetails'>
+    <div className='centerCard'>
         {aircraft && (
             <>
            <img 
