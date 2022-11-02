@@ -36,11 +36,12 @@ function CommentsPage() {
     useEffect(() => {
         getTrips();
     }, []);
-
+let updateDate = "";
     return (
         <div className="CommentsPage">
             {
                 tripsArr.map((trip, index) => {
+                    updateDate = trip.updatedAt.slice(0, 16).split('T');
                     return (
                         // <div className="Comments" key={index}>
                         //     <h3>Created by: {trip.userId.name}</h3>
@@ -68,7 +69,7 @@ function CommentsPage() {
                             </Card.Body>
                             <Card.Footer className="text-muted">
                                 <p>Rating: {trip.reviewStars}</p>
-                                <p>Created: {trip.updatedAt}</p>
+                                <p>Created: {updateDate[0]} at {updateDate[1]}</p>
                             </Card.Footer>
                         </Card>
 

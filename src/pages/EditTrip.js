@@ -6,10 +6,11 @@ import { AuthContext } from "../context/auth.context";
 
 
 
-function EditProjectPage(props) {
+function EditTrip(props) {
     const [startTrip, setStartTrip] = useState("");
     const [duration, setDuration] = useState("");
     const [peoplesNum, setPeoplesNum] = useState("1");
+    const [aircraftId, setAircraftId] = useState("1");
     const { tripId } = useParams();
     const redirect = useNavigate();
     const { user } = useContext(AuthContext);
@@ -30,6 +31,7 @@ function EditProjectPage(props) {
                 setStartTrip(oneTrip.startTrip);
                 setDuration(oneTrip.duration);
                 setPeoplesNum(oneTrip.peoplesNum);
+                setAircraftId(oneTrip.aircraftId);
             })
             .catch((error) => console.log(error));
 
@@ -53,22 +55,24 @@ function EditProjectPage(props) {
     const deleteTrip = () => {                    //  <== ADD
         // Make a DELETE request to delete the project
         axios
-          .delete(`${process.env.REACT_APP_API_URL}/trips/${tripId}`)
-          .then(() => {
-            // Once the delete request is resolved successfully
-            // navigate back to the list of projects.
-            redirect(`/trips`)
-          })
-          .catch((err) => console.log(err));
-      };  
-
-      return (
+            .delete(`${process.env.REACT_APP_API_URL}/trips/${tripId}`)
+            .then(() => {
+                // Once the delete request is resolved successfully
+                // navigate back to the list of projects.
+                redirect(`/trips`)
+            })
+            .catch((err) => console.log(err));
+    };
+    let startAt = "";
+    return (
+        
         <div className="EditTrip">
+            {startAt = startTrip.slice(0, 16).split('T')}
             <h3>Edit Trip</h3>
-<p>You can not change start time here, please cansel this booking and create new!</p>
+            <p>You can not change start time here, please cansel this booking and create new!</p>
             <form onSubmit={handleFormSubmit}>
-                <label>Start Trip: <span>{startTrip}</span></label>
-                
+                <label>Start Trip: <span>{startAt[0]} at {startAt[1]}</span></label>
+
                 {/* <input
                     type="text"
                     name="startTrip"
@@ -90,7 +94,7 @@ function EditProjectPage(props) {
                     type="number"
                     name="peoplesNum"
                     min="1"
-                    max="10"
+                    max={aircraftId.seats}
                     value={peoplesNum}
                     onChange={(e) => setPeoplesNum(e.target.value)}
                 />
@@ -102,4 +106,4 @@ function EditProjectPage(props) {
     );
 }
 
-export default EditProjectPage;
+export default EditTrip;
