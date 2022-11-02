@@ -26,15 +26,15 @@ function TripsPage() {
             .catch((error) => {
                 const errorDescription = error.response.data.message;
                 setErrorMessage(errorDescription);
-               
+
             })
     };
 
     useEffect(() => {
         getTrips();
     }, []);
-let takeOff = "";
-let createTime = "";
+    let takeOff = "";
+    let createTime = "";
     return (
         <div className="TripsPage">
             {
@@ -54,11 +54,23 @@ let createTime = "";
 
                             {user && user.isAdmin
                                 ? <hr />
-                                : dateTime < trip.startTripNum - 8640000
-                                    ? <Link to={`/trips/edit/${trip._id}`}> Edit</Link>
-                                    : <Link to={`/trips/details/${trip._id}`}> Leave comment</Link>
+                                : dateTime < trip.startTripNum - 86400000
+                                    ? <>
+                                    <p>Status: Approved</p>
+                                    <Link to={`/trips/edit/${trip._id}`}> Edit</Link>
+                                    </>
+                                    : dateTime > trip.startTripNum - 86400000 && dateTime < trip.startTripNum
+                                        ? <p>Status: Wait for taking off</p>
+                                        : dateTime > trip.startTripNum && dateTime < trip.startTripNum + Number(trip.duration) * 6000
+                                            ? <p>Status: Took off</p>
+                                            : <>
+                                                <p>Status: Landed</p>
+                                                <Link to={`/trips/details/${trip._id}`}> Leave comment</Link>
+                                            </>
                             }
+                            <hr />
                         </div>
+                        
                     );
                 })
             }
