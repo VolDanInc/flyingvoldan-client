@@ -48,7 +48,7 @@ let updateDate = "";
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '48rem'}}
+                            style={{ width: '24rem'}}
                             className="mb-2"
                         >
                             <Card.Header>Created by: {trip.userId.name}</Card.Header>

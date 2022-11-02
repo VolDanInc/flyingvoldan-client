@@ -17,7 +17,7 @@ function Navbar(props) {
 
 
   return (
-    <div className="navbar">
+    <div className="nav">
       <Menu {...props} left isOpen={false} >
 
 

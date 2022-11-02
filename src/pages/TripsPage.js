@@ -50,7 +50,7 @@ function TripsPage() {
                             text='white'
                             style={{ width: '28rem' }}
                             className="mb-2" >
-                                <Card.Body>
+                                <Card.Body className="tripsCards">
                             <h3>Created by: {trip.userId.name}</h3>
                             <p>Created: {createTime[0]} at {createTime[1]}</p>
                             {/* <Card.Img className="cardImg" variant="top" src={aircraft.img}onError={({ currentTarget }) => {
@@ -67,21 +67,21 @@ function TripsPage() {
                                 ? <hr />
                                 : dateTime < trip.startTripNum - 86400000
                                     ? <>
-                                    <p>Status: Approved</p>
+                                    <p className="approved">Status: Approved</p>
                                     <Link to={`/trips/edit/${trip._id}`}> Edit</Link>
                                     </>
                                     : dateTime > trip.startTripNum - 86400000 && dateTime < trip.startTripNum
-                                        ? <p>Status: Wait for taking off</p>
+                                        ? <p className="waiting">Status: Waiting for taking off</p>
                                         : dateTime > trip.startTripNum && dateTime < trip.startTripNum + Number(trip.duration) * 6000
-                                            ? <p>Status: Took off</p>
+                                            ? <p className="takeOff">Status: Took off</p>
                                             : <>
-                                                <p>Status: Landed</p>
+                                                <p className="landed">Status: Landed</p>
                                                 <Link to={`/trips/details/${trip._id}`}> Leave comment</Link>
                                             </>
                             }
                             </Card.Body>
                             </Card>
-                            <hr />
+                        
                         </div>
                         
                     );

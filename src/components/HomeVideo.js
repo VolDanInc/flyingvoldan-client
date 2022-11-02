@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 
 import video from "../styles/video.mp4"
 
@@ -15,8 +14,10 @@ function HomeVideo() {
                     <h1 id="headline" >THE SKY IS NOT THE LIMIT.</h1>
                     <p id="2nd-headline">EXPERIENCE FLYING LIKE NEVER BEFORE.</p>
                     <p></p>
-                    <Button type="button" class="btn btn-outline-warning">EXPLORE</Button>
-                </div>
+                    
+                
+                    <button  className="btn btn-outline-warning"> EXPLORE</button>
+                    </div>
             </div>
             
         </div>

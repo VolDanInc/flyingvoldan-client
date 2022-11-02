@@ -1,17 +1,8 @@
 
-.App {
-  height: auto;
-    /* position: absolute; */
-  }
-  html,
-
-.navbar{
-  margin-top: 0;
-}
-  .home{
+  /* .home{
    text-align: center;
 padding-top: 3%;
-  }
+  } */
 
 .cards, .centerCard, .home{
   display: flex;
@@ -21,7 +12,9 @@ padding-top: 3%;
  padding-top: 3%;
  padding-bottom: 2%;
  align-content:space-around;
- text-align:center
+ text-align:center;
+ margin-left: 3%;
+ margin-right: 3%;
 }
  .unit{
   margin-bottom: 2%;
@@ -61,14 +54,14 @@ padding-top: 3%;
     /* Our sidebar item styling */
     text-decoration: none;
     margin-bottom: 10px;
-    color: #d1d1d1;
+    color: #f9f4f4;
     transition: color 0.2s;
     text-align: left;
   }
   
   /* Change color on hover */
   .bm-item:hover {
-    color: white;
+    color: rgb(118, 118, 116);
   }
   
   /* The rest copied directly from react-burger-menu docs */
@@ -84,7 +77,7 @@ padding-top: 3%;
   
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-    background: #373a47;
+    background: #ecece9;
   }
   
   /* Position and sizing of clickable cross button */
@@ -100,9 +93,9 @@ padding-top: 3%;
   
   /* General sidebar styles */
   .bm-menu {
-    background: #373a47;
+    background: #7393a1;
     padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
+    font-size: 1.85em;
   }
   
   /* Morph shape necessary with bubble or elastic */
@@ -136,15 +129,24 @@ padding-top: 3%;
   .content, p{
     font-size: 25px;
   }
-/* .overlay{
-  position:absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .4);
-} */
+/*  */
 .forms {
   display: flex;
   justify-content: center;
+}
+
+.tripsCards{
+  width: 100%;
+  min-height: 470px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+.landed{
+  color: rgb(44, 247, 44);
+}
+.waiting{
+  color:yellow
+}
+.approved{
+  color:orange
 }

@@ -39,7 +39,7 @@ function HomePage() {
     return (
         <div className="home" >
          
-            <h1>Choose an aircraft</h1> 
+            <h1 >Choose an aircraft</h1> 
         <div className="cards">
             {
                 aircrafts.map((aircraft, index) => {
@@ -52,7 +52,7 @@ function HomePage() {
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '28rem'}}
+                            style={{ width: '32rem'}}
                             className="mb-2"
                             
                             
