@@ -1,11 +1,16 @@
 // src/pages/CreateTrip.js
-
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import DateTimePicker from 'react-datetime-picker';
-
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 
 function CreateTrip(props) {
@@ -46,7 +51,7 @@ function CreateTrip(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         //console.log(timetable);
         //console.log(startTrip.toLocaleTimeString());
         //let busy = isBusy.includes(startTrip.valueOf());
@@ -56,14 +61,14 @@ function CreateTrip(props) {
         if (startTrip && startTime && !message) {
             //setIsBusy([...isBusy, startTripNum]);
             //console.log(startTripNum);
-           
+
             const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
-            
+
             axios
                 .post(`${process.env.REACT_APP_API_URL}/trips`, requestBody)
                 .then((response) => {
                     // Reset the state to clear the inputs
-                    
+
                     setStartTrip("");
                     setStartTripNum(0);
                     setReview("");
@@ -74,7 +79,7 @@ function CreateTrip(props) {
 
                 })
                 .catch((error) => console.log(error));
-            
+
             const busyAircraft = { isBusy };
             axios
                 .put(`${process.env.REACT_APP_API_URL}/aircrafts/${aircraftId}`, busyAircraft)
@@ -86,11 +91,11 @@ function CreateTrip(props) {
         } else if (!message) {
             setMessage("Please set the departure time according to the schedule.");
             console.log("Message timetable.....");
-            
+
         } else {
             console.log("Message busy.....");
             //setIsBusy([]);
-            
+
         }
     };
     // function refreshPage() {
@@ -102,7 +107,7 @@ function CreateTrip(props) {
 
     return (
         <div className="forms">
-            <h3>Add New Trip</h3>
+            {/* <h3>Add New Trip</h3>
             <h3>{message}</h3>
 
             <p>Daily departure time of this aircraft:</p>
@@ -143,7 +148,65 @@ function CreateTrip(props) {
 
                     //console.log(startTrip.toLocaleTimeString());
                 }}>Add Trip</button>
-            </form>
+            </form> */}
+
+            <Form onSubmit={handleSubmit}
+            style={{ width: '60vw', backgroundColor: "#393838", padding: "20px", borderRadius: "10px" }}>
+                <Form.Text className="text-light"><h3>Add New Trip</h3></Form.Text>
+                <Form.Text className="text-light"><h3>{message}</h3></Form.Text>
+                <Form.Text className="text-light">Daily departure time of this aircraft:</Form.Text>
+                <Row className="mb-3">
+                    <Col>
+                        <Card>{timetable[0]}</Card>
+                    </Col>
+                    <Col>
+                        <Card>{timetable[1]}</Card>
+                    </Col>
+                    <Col>
+                        <Card>{timetable[2]}</Card>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+
+
+                        <Card>
+                            <Form.Text>Start Trip:</Form.Text>
+                            <DateTimePicker onChange={setStartTrip} value={startTrip} />
+                        </Card>
+
+                    </Col>
+                    <Col>
+                        <FloatingLabel controlId="floatingDateTime" label="Duration:" className="mb-3">
+                            <Form.Select onChange={(e) => setDuration(e.target.value)}>
+                                <option value="30" >30</option>
+                                <option value="60" >60</option>
+                                <option value="90" >90</option>
+                                <option value="120" >120</option>
+                            </Form.Select>
+                        </FloatingLabel>
+                    </Col>
+                    <Col>
+                        <FloatingLabel controlId="floatingDatePeople" label="Peoples number::" className="mb-3">
+                            <Form.Control type="number"
+                                value={peoplesNum}
+                                min="1"
+                                max={seats}
+                                onChange={(e) => setPeoplesNum(e.target.value)} />
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Button variant="outline-secondary" type="submit" onClick={() => {
+                    setMessage("");
+                    setStartTripNum(startTrip.valueOf());
+                    if (!isBusy.includes(startTrip.valueOf())) {
+                        setIsBusy([...isBusy, startTrip.valueOf()]);
+                    } else {
+                        setMessage("We are sorry.. air craft is busy at this time, please choose another taking off time.");
+                    }
+                }}>Add Trip</Button>
+            </Form>
+
         </div>
     );
 }

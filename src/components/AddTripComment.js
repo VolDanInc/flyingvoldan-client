@@ -2,8 +2,9 @@
 import { useParams, useNavigate } from "react-router-dom";  //  <== IMPORT
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 function AddTripComment(props) {
     const { tripId } = useParams();
@@ -42,13 +43,13 @@ function AddTripComment(props) {
             });
     };
 
-      return (
-        <div className="LeaveComment">
-            <h3>Your review</h3>
+    return (
+        <div className="forms">
+            {/* <h3>Your review</h3>
 
             <form onSubmit={handleFormSubmit}>
                 <label>Comment:</label>
-                <textarea rows="8" cols="80" 
+                <textarea rows="8" cols="80"
                     type="text"
                     name="review"
                     value={review}
@@ -66,8 +67,35 @@ function AddTripComment(props) {
                 </select>
 
                 <button type="submit">Save changes</button>
-                
-            </form>
+
+            </form> */}
+
+            <Form onSubmit={handleFormSubmit}
+                style={{ width: '60vw', backgroundColor: "#393838", padding: "20px", borderRadius: "10px" }}>
+                <Form.Text className="text-light"><h3>Your review</h3></Form.Text>
+
+
+                <FloatingLabel controlId="floatingComment" label="Comment:" className="mb-3">
+                    <Form.Control type="textarea" value={review} 
+                        onChange={(e) => setReview(e.target.value)} />
+                </FloatingLabel>
+
+
+
+                <FloatingLabel controlId="floatingRating" label="Trip evaluation:" className="mb-3">
+                    <Form.Select onChange={(e) => setReviewStars(e.target.value)}>
+                        <option value="5" >5</option>
+                        <option value="4" >4</option>
+                        <option value="3" >3</option>
+                        <option value="2" >2</option>
+                        <option value="1" >1</option>
+                    </Form.Select>
+                </FloatingLabel>
+
+
+                <Button variant="outline-secondary" type="submit" >Save changes</Button>
+            </Form>
+
         </div>
     );
 }
