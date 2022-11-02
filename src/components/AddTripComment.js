@@ -5,6 +5,7 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Accordion from 'react-bootstrap/Accordion';
 
 function AddTripComment(props) {
     const { tripId } = useParams();
@@ -45,43 +46,26 @@ function AddTripComment(props) {
 
     return (
         <div className="forms">
-            {/* <h3>Your review</h3>
-
-            <form onSubmit={handleFormSubmit}>
-                <label>Comment:</label>
-                <textarea rows="8" cols="80"
-                    type="text"
-                    name="review"
-                    value={review}
-                    onChange={(e) => setReview(e.target.value)}
-                />
-
-
-                <label>Trip evaluation:</label>
-                <select name="reviewStars" onChange={(e) => setReviewStars(e.target.value)}>
-                    <option value="5" >5</option>
-                    <option value="4" >4</option>
-                    <option value="3" >3</option>
-                    <option value="2" >2</option>
-                    <option value="1" >1</option>
-                </select>
-
-                <button type="submit">Save changes</button>
-
-            </form> */}
-
+            
             <Form onSubmit={handleFormSubmit}
                 style={{ width: '60vw', backgroundColor: "#393838", padding: "20px", borderRadius: "10px" }}>
                 <Form.Text className="text-light"><h3>Your review</h3></Form.Text>
 
 
-                <FloatingLabel controlId="floatingComment" label="Comment:" className="mb-3">
-                    <Form.Control type="textarea" value={review} 
-                        onChange={(e) => setReview(e.target.value)} />
-                </FloatingLabel>
+                {/* <FloatingLabel controlId="floatingComment" label="Comment:" className="mb-3">
+                    <Form.Control as="textarea" value={review} 
+                        onChange={(e) => setReview(e.target.value)} style={{ height: "20vh"}}/>
+                </FloatingLabel> */}
 
-
-
+                <Accordion defaultActiveKey="0" className="mb-3" variant="outline-secondary">
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header><Form.Text>Comment:</Form.Text></Accordion.Header>
+                        <Accordion.Body>
+                            <Form.Control as="textarea" value={review}
+                                onChange={(e) => setReview(e.target.value)} style={{ height: "20vh" }} />
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
                 <FloatingLabel controlId="floatingRating" label="Trip evaluation:" className="mb-3">
                     <Form.Select onChange={(e) => setReviewStars(e.target.value)}>
                         <option value="5" >5</option>
