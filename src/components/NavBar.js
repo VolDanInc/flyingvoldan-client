@@ -22,7 +22,7 @@ function Navbar(props) {
 
 
         {/* <nav className="nav" id = "nav"> */}
-        <Link to="/" className="menu-item" > Home </Link>
+        <Link data-toggle="collapse" data-target=".navbar-collapse.show" to="/" className="menu-item" > Home </Link>
         <Link to={`/trips/comments`} className="menu-item">View comments </Link>
         {user
           ? user._id &&

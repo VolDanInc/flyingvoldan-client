@@ -26,7 +26,7 @@ function CreateTrip(props) {
     const [message, setMessage] = useState("");
     const [seats, setSeats] = useState("");
     const [tripScore, setTripScore] = useState(0);
-    const [tripStatus, setTripStatus] = useState("Wait for approve");
+    const [tripStatus, setTripStatus] = useState("Waiting for approval");
     const [dateTime, setDateTime] = useState(new Date().valueOf());
     const { aircraftId } = useParams();
     //const [value, onChange] = useState(new Date());

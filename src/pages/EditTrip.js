@@ -102,7 +102,7 @@ function EditTrip(props) {
                         </FloatingLabel>
                     </Col>
                     <Col>
-                        <FloatingLabel controlId="floatingDatePeople" label="Peoples number:" className="mb-3">
+                        <FloatingLabel controlId="floatingDatePeople" label="Passangers:" className="mb-3">
                             <Form.Control type="number"
                                 min="1"
                                 max={aircraftId.seats}
