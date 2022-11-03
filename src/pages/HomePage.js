@@ -33,17 +33,19 @@ function HomePage() {
     return (
         <div className="home" >
          <HomeVideo />
-             <h1 >Choose an aircraft</h1>
+        
+             <h2 >Choose an aircraft</h2>
         <div className="cards">
             {
                 aircrafts.map((aircraft, index) => {
                     return (
                         
                         <Card
-                            bg='dark'
+                           bg='dark'
+                    
                             key={index}
                             text='white'
-                            style={{ width: '32rem'}}
+                            style={{ width: '22rem'}}
                             className="mb-4"
                         >
                             <Card.Img className="cardImg" variant="top" src={aircraft.img} onError={({ currentTarget }) => {
@@ -52,7 +54,7 @@ function HomePage() {
                             }} />
                             <Card.Body>
                                 <Card.Title id="cardTitle">{aircraft.name}</Card.Title>
-                                <Card.Text>
+                                <Card.Text id="seats">
                                     Seats: {aircraft.seats}
                                 </Card.Text>
                                 <Link className="btn btn-outline-secondary" to={`/aircrafts/${aircraft._id}`} role="button"> Details</Link>

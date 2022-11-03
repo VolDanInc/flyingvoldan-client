@@ -1,28 +1,56 @@
+.App{
+  background-color: #E7E6E5;
+  height: 100vh;
+}
+
 .cards,
 .centerCard {
   display: flex;
   flex-wrap: wrap;
   align-items: top;
   justify-content: space-around;
-  padding-top: 3%;
-  padding-bottom: 2%;
+  padding: 5% 5% 5% 5%;
   align-content: space-around;
   text-align: center;
-  margin-left: 3%;
-  margin-right: 3%;
+  /* margin-left: 3%;
+  margin-right: 3%; */
+ background-color: #E7E6E5;
 }
 
 .home {
   text-align: center;
+  background-color:#E7E6E5;
+}
+h2{
+  color:#2C1A1D;
+  padding-top: 3%;
 }
 
-
 #cardTitle {
-  font-size: 35px
+  font-size: 25px
 }
 
 #cardDescription {
-  font-size: 20px;
+  font-size: 17px;
+}
+#seats{
+  font-size: 18px;
+}
+#aircraftDesc {
+  font-size: 17px;
+}
+
+#aircraftPrice, #aircraftSeats{
+  font-size: 21px;
+  margin-bottom: 0.3%;
+}
+#aircraftAv{
+  font-size: 21px;
+  margin-bottom: 3%;
+}
+
+.timeTable{
+ padding-left: 2%;
 }
 
 .cardImg {
@@ -78,7 +106,7 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #ecece9;
+  background: #f9c819;
 }
 
 /* Position and sizing of clickable cross button */
@@ -140,6 +168,8 @@ p {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: #E7E6E5;
+ 
 }
 
 .tripsCards {
@@ -147,7 +177,9 @@ p {
   min-height: 470px;
   object-fit: cover;
   margin-top: 20px;
+  
 }
+
 
 .landed {
   color: rgb(44, 247, 44);
@@ -171,3 +203,18 @@ p {
 #logout:hover {
   color: rgb(118, 118, 116);
 }
+#login{
+  color:white;
+  padding-bottom: 2%;
+}
+#tripsImg{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: top;
+  justify-content: space-around;
+  padding: 0% 1% 5% 1%;
+  align-content: space-around;
+  text-align: center;
+ 
+}
+

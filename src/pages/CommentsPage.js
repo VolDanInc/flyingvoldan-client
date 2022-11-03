@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 //import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Accordion from 'react-bootstrap/Accordion';
+import cover2 from "../styles/cover2.jpg"
 
 
 
@@ -40,7 +41,11 @@ function CommentsPage() {
     }, []);
     let updateDate = "";
     return (
+
         <div className="forms">
+            <div className='ratio ratio-16x9'>
+        <img  id="tripsImg" src={cover2} />
+        </div>
             {
                 tripsArr.map((trip, index) => {
                     updateDate = trip.updatedAt.slice(0, 16).split('T');
@@ -48,12 +53,11 @@ function CommentsPage() {
                         <Card
                             key={index}
                             text='white'
+
                             style={{
                                 width: '60vw',
                                 backgroundColor: "#393838",
-                                
                                 borderRadius: "10px",
-                                
                             }}
                             className="mb-2"
                         >
