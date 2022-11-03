@@ -89,7 +89,7 @@ function TripsPage() {
                                     <p>Duration: {trip.duration} minutes</p>
                                     <p>Passengers: {trip.peoplesNum}</p>
                                     <p>Cost: {trip.peoplesNum * trip.aircraftId.price * Number(trip.duration) / 60}$</p>
-                                    <p id="takeOff">Take-off: {takeOff[0]} at {takeOff[1]}</p>
+                                    <p id="takeOff">Take-off: {takeOff[0]} at {takeOff[1]} GMT</p>
 
                                     {user && user.isAdmin
                                         ? <><Button variant="outline-secondary" onClick={(e) => {
