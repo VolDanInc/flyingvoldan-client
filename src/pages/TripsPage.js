@@ -68,7 +68,7 @@ function TripsPage() {
             <div className='ratio ratio-16x9'>
         <img  id="tripsImage" src={cover1} />
         </div>
-            {
+            {tripsArr && 
                 tripsArr.map((trip, index) => {
                     //console.log(trip.aircraftId);
                     takeOff = trip.startTrip.slice(0, 16).split('T');

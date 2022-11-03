@@ -46,7 +46,7 @@ function CommentsPage() {
             <div className='ratio ratio-16x9'>
         <img  id="tripsImg" src={cover2} />
         </div>
-            {
+            { tripsArr && 
                 tripsArr.map((trip, index) => {
                     updateDate = trip.updatedAt.slice(0, 16).split('T');
                     return (
