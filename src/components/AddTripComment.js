@@ -29,7 +29,7 @@ function AddTripComment(props) {
 
     }, [tripId]);
 
-    const handleFormSubmit = (e) => {                     // <== ADD
+    const handleFormSubmit = (e) => {       
         e.preventDefault();
         // Create an object representing the body of the PUT request
         const requestBody = { review, reviewStars };
