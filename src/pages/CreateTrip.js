@@ -25,6 +25,8 @@ function CreateTrip(props) {
     const [isBusy, setIsBusy] = useState([]);
     const [message, setMessage] = useState("");
     const [seats, setSeats] = useState("");
+    const [tripScore, setTripScore] = useState(0);
+    const [tripStatus, setTripStatus] = useState("Wait for approve");
 
     const { aircraftId } = useParams();
     //const [value, onChange] = useState(new Date());
@@ -62,7 +64,17 @@ function CreateTrip(props) {
             //setIsBusy([...isBusy, startTripNum]);
             //console.log(startTripNum);
 
-            const requestBody = { aircraftId, userId, startTrip, startTripNum, review, reviewStars, duration, peoplesNum };
+            const requestBody = { 
+                aircraftId, 
+                userId, 
+                startTrip, 
+                startTripNum, 
+                review, 
+                reviewStars, 
+                duration, 
+                peoplesNum, 
+                tripScore, 
+                tripStatus };
 
             axios
                 .post(`${process.env.REACT_APP_API_URL}/trips`, requestBody)
@@ -94,8 +106,6 @@ function CreateTrip(props) {
 
         } else {
             console.log("Message busy.....");
-            //setIsBusy([]);
-
         }
     };
 
@@ -154,6 +164,7 @@ function CreateTrip(props) {
                 <Button variant="outline-secondary" type="submit" onClick={() => {
                     setMessage("");
                     setStartTripNum(startTrip.valueOf());
+                    setTripStatus("WAIT FOR APPROVE");
                     if (!isBusy.includes(startTrip.valueOf())) {
                         setIsBusy([...isBusy, startTrip.valueOf()]);
                     } else {

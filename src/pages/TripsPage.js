@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from '../context/auth.context';
 import { Card } from "react-bootstrap";
 import cover1 from "../styles/cover1.jpg"
+import Button from 'react-bootstrap/Button';
 
 function TripsPage() {
 
@@ -13,6 +14,7 @@ function TripsPage() {
     const [dateTime, setDateTime] = useState(new Date().valueOf());
     const [errorMessage, setErrorMessage] = useState(undefined);
     const { isLoggedIn, user } = useContext(AuthContext);
+    
     let userId = "";
     if (user) {
         userId = user._id;
@@ -34,12 +36,13 @@ function TripsPage() {
 
     useEffect(() => {
         getTrips();
-    }, []);
+    }, [tripStatus]);
 
-    const handleFormSubmit = (e, tripId) => {       
+    const handleFormSubmit = (e, tripId, st) => {       
         e.preventDefault();
         // Create an object representing the body of the PUT request
-        const requestBody = { tripStatus };
+        
+        const requestBody = { tripStatus: st };
 
         // Make a PUT request to update the project
         axios
@@ -92,20 +95,33 @@ function TripsPage() {
                                     <p>Passengers: {trip.peoplesNum}</p>
                                     <p>Cost: {trip.peoplesNum * trip.aircraftId.price * Number(trip.duration) / 60}$</p>
                                     <p>Take off: {takeOff[0]} at {takeOff[1]}</p>
-
+                                    <p className="approved">Status: {trip.tripStatus}</p>
                                     {user && user.isAdmin
-                                        ? <><Button variant="outline-secondary" onClick={(e) => {
+                                        ? trip.tripStatus === "Approved" && dateTime < trip.startTripNum
+                                        ? <Button variant="outline-secondary" onClick={(e) => {
+                                                setTripId(trip._id);
+                                                setTripStatus("Canceled");
+                                                handleFormSubmit(e, tripId, tripStatus)
+                                            }} >Cancel trip</Button>
+                                        : trip.tripStatus === "Canceled"
+                                        ? <></>
+                                        :
+                                        
+                                        
+                                       <> <Button variant="outline-secondary" onClick={(e) => {
                                             setTripId(trip._id);
-                                            console.log(tripId);
-                                            setTripStatus("Approved", tripId);
-                                            handleFormSubmit(e, tripId)
+                                            //console.log(tripId);
+                                            setTripStatus("Approved");
+                                            handleFormSubmit(e, tripId, tripStatus)
                                             }} >Approve trip</Button>
                                             <Button variant="outline-secondary" onClick={(e) => {
                                                 setTripId(trip._id);
                                                 setTripStatus("Canceled");
-                                                handleFormSubmit(e)
-                                            }} >Cancel trip</Button></>
-                                        : dateTime < trip.startTripNum - 86400000
+                                                handleFormSubmit(e, tripId, tripStatus)
+                                            }} >Cancel trip</Button>
+                                            </>
+                                        : trip.tripStatus === "Approved"
+                                        ? dateTime < trip.startTripNum - 86400000
                                             ? <>
                                                 <p className="approved">Status: Approved</p>
                                                 <Link to={`/trips/edit/${trip._id}`}> Edit</Link>
@@ -118,6 +134,7 @@ function TripsPage() {
                                                         <p className="landed">Status: Landed</p>
                                                         <Link to={`/trips/details/${trip._id}`}> Leave comment</Link>
                                                     </>
+                                        : <></>            
                                     }
                                 </Card.Body>
                             </Card>
