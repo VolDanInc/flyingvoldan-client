@@ -27,7 +27,7 @@ function CreateTrip(props) {
     const [seats, setSeats] = useState("");
     const [tripScore, setTripScore] = useState(0);
     const [tripStatus, setTripStatus] = useState("Wait for approve");
-
+    const [dateTime, setDateTime] = useState(new Date().valueOf());
     const { aircraftId } = useParams();
     //const [value, onChange] = useState(new Date());
     const redirect = useNavigate();
@@ -54,13 +54,15 @@ function CreateTrip(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //console.log(timetable);
-        //console.log(startTrip.toLocaleTimeString());
+        console.log(timetable);
+        console.log(startTrip.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false}));
         //let busy = isBusy.includes(startTrip.valueOf());
         let startTime = timetable.includes(startTrip.toLocaleTimeString());
+        let startTime1 = timetable.includes(startTrip.toLocaleTimeString('en-US', { hour12: false }));
+        let startTime2 = timetable.includes(startTrip.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false}));
 
 
-        if (startTrip && startTime && !message) {
+        if (startTrip && (startTime || startTime1 || startTime2) && !message) {
             //setIsBusy([...isBusy, startTripNum]);
             //console.log(startTripNum);
 
@@ -165,6 +167,9 @@ function CreateTrip(props) {
                     setMessage("");
                     setStartTripNum(startTrip.valueOf());
                     setTripStatus("WAIT FOR APPROVE");
+                    //if (startTrip.valueOf() < dateTime) {                         | commented for future using
+                    //    setMessage("It seems you tried to book trip in past..."); |
+                    //} else                                                        |
                     if (!isBusy.includes(startTrip.valueOf())) {
                         setIsBusy([...isBusy, startTrip.valueOf()]);
                     } else {

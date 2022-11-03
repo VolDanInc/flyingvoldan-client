@@ -36,7 +36,7 @@ function TripsPage() {
 
     useEffect(() => {
         getTrips();
-    }, [tripStatus]);
+    }, []);
 
     const handleFormSubmit = (e, tripId, st) => {       
         e.preventDefault();
@@ -84,7 +84,7 @@ function TripsPage() {
                                 <Card.Body className="tripsCards">
                                     <h3>Booked by: {trip.userId.name}</h3>
                                     <p id="createdAt">Created at: {createTime[0]} at {createTime[1]}</p>
-                                    <p>{trip.aircraftId.name}</p>
+                                    <p>{trip.aircraftId && trip.aircraftId.name}</p>
                                     <p>Duration: {trip.duration} minutes</p>
                                     <p>Passengers: {trip.peoplesNum}</p>
                                     <p>Cost: {trip.peoplesNum * trip.aircraftId.price * Number(trip.duration) / 60}$</p>

@@ -63,7 +63,7 @@ function CommentsPage() {
                         >
                             <Card.Header>Created by: {trip.userId.name}</Card.Header>
                             <Card.Body>
-                                <Card.Title>Aircraft: {trip.aircraftId.name}</Card.Title>
+                                <Card.Title>Aircraft: {trip.aircraftId && trip.aircraftId.name}</Card.Title>
                                 <Accordion defaultActiveKey="0" className="mb-3" variant="outline-secondary">
                                     <Accordion.Item eventKey="0">
                                         <Accordion.Header><Form.Text>Comment:</Form.Text></Accordion.Header>
