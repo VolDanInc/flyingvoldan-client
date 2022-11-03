@@ -208,6 +208,7 @@ p {
   font-size: 28px;
   padding-left: 0;
   padding-top: 9%;
+  margin-left: -5%;
 }
 #logout:hover {
   color: rgb(118, 118, 116);
