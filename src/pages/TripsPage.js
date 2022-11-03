@@ -99,7 +99,7 @@ function TripsPage() {
                                                 setTripStatus("Canceled");
                                                 handleFormSubmit(e, trip._id, "Canceled")
                                             }} >Cancel trip</Button></>
-                                            :<p className="approved">Status: {trip.tripStatus}</p>
+                                            :<p className="canceled">Status: {trip.tripStatus}</p>
                                         : trip.tripStatus === "Canceled"
                                         ? <p className="approved">Status: {trip.tripStatus}</p>
                                         : <>

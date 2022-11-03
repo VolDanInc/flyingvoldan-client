@@ -18,12 +18,13 @@ function Navbar(props) {
 
   return (
     <div className="nav">
-      <Menu {...props} left isOpen={false} >
+      <Menu {...props} left isOpen={false} id="navMenu">
 
 
         {/* <nav className="nav" id = "nav"> */}
-        <Link data-toggle="collapse" data-target=".navbar-collapse.show" to="/" className="menu-item" > Home </Link>
-        <Link to={`/trips/comments`} className="menu-item">View comments </Link>
+       
+        <Link  to="/" className="menu-item" > Home </Link>
+        <Link to={`/trips/comments`} className="menu-item">Comments </Link>
         {user
           ? user._id &&
           <Link to={`/trips/user/${user._id}`} className="menu-item"> Trips history</Link>

@@ -3,6 +3,8 @@
   height: 100vh;
 }
 
+
+
 .cards,
 .centerCard {
   display: flex;
@@ -117,10 +119,13 @@ h2{
 .bm-cross {
   background: #bdc3c7;
 }
-
+.menu-item{
+  padding-top: 5%;
+  margin-left: -5%;
+}
 /* General sidebar styles */
 .bm-menu {
-  background: #7393a1;
+  background: #a3a3a37b;
   padding: 2.5em 1.5em 0;
   font-size: 1.85em;
 }
@@ -193,13 +198,16 @@ p {
 .approved {
   color: orange
 }
-
+.canceled{
+  color: red
+}
 #logout {
-  background-color: #7393a1;
+  background-color: #a3a3a300;
   border: none;
   color: #f9f4f4;
   font-size: 28px;
-  padding-left: 0
+  padding-left: 0;
+  padding-top: 9%;
 }
 #logout:hover {
   color: rgb(118, 118, 116);
