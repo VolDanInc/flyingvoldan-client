@@ -166,7 +166,7 @@ function CreateTrip(props) {
                 <Button variant="outline-secondary" type="submit" onClick={() => {
                     setMessage("");
                     setStartTripNum(startTrip.valueOf());
-                    setTripStatus("WAIT FOR APPROVE");
+                    setTripStatus("Waiting for approval");
                     //if (startTrip.valueOf() < dateTime) {                         | commented for future using
                     //    setMessage("It seems you tried to book trip in past..."); |
                     //} else                                                        |
