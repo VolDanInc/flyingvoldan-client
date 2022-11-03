@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../context/auth.context';
 import { Card } from "react-bootstrap";
 import cover1 from "../styles/cover1.jpg"
@@ -14,7 +14,7 @@ function TripsPage() {
     const [dateTime, setDateTime] = useState(new Date().valueOf());
     const [errorMessage, setErrorMessage] = useState(undefined);
     const { isLoggedIn, user } = useContext(AuthContext);
-    
+    const redirect = useNavigate();
     let userId = "";
     if (user) {
         userId = user._id;
@@ -50,8 +50,8 @@ function TripsPage() {
             .then((response) => {
                 // Once the request is resolved successfully and the project
                 // is updated we navigate back to the details page
-                //redirect(`/`)
-                console.log("Approved....." + response);
+                redirect(`/trips/user/${userId}`);
+                //console.log("Approved....." + response);
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
@@ -84,38 +84,37 @@ function TripsPage() {
                                 <Card.Body className="tripsCards">
                                     <h3>Booked by: {trip.userId.name}</h3>
                                     <p id="createdAt">Created at: {createTime[0]} at {createTime[1]}</p>
-                                    {/* <Card.Img className="cardImg" variant="top" src={aircraft.img}onError={({ currentTarget }) => {
-                                currentTarget.onerror = null;
-                                currentTarget.src = "https://www.pngitem.com/pimgs/m/119-1197957_lear-jet-clip-arts-liar-jet-icon-png.png";
-                            }} /> */}
                                     <p>{trip.aircraftId.name}</p>
                                     <p>Duration: {trip.duration} minutes</p>
                                     <p>Passengers: {trip.peoplesNum}</p>
                                     <p>Cost: {trip.peoplesNum * trip.aircraftId.price * Number(trip.duration) / 60}$</p>
                                     <p id="takeOff">Take-off: {takeOff[0]} at {takeOff[1]}</p>
-                                    <p className="approved">Status: {trip.tripStatus}</p>
+                                    
                                     {user && user.isAdmin
-                                        ? trip.tripStatus === "Approved" && dateTime < trip.startTripNum
-                                        ? <Button variant="outline-secondary" onClick={(e) => {
+                                        ? trip.tripStatus === "Approved"
+                                        ? dateTime < trip.startTripNum 
+                                        ? <><p className="approved">Status: {trip.tripStatus}</p>
+                                        <Button variant="outline-secondary" onClick={(e) => {
                                                 setTripId(trip._id);
                                                 setTripStatus("Canceled");
-                                                handleFormSubmit(e, tripId, tripStatus)
-                                            }} >Cancel trip</Button>
+                                                handleFormSubmit(e, trip._id, "Canceled")
+                                            }} >Cancel trip</Button></>
+                                            :<p className="approved">Status: {trip.tripStatus}</p>
                                         : trip.tripStatus === "Canceled"
-                                        ? <></>
-                                        :
+                                        ? <p className="approved">Status: {trip.tripStatus}</p>
+                                        : <>
+                                        <p className="approved">Status: {trip.tripStatus}</p>
                                         
-                                        
-                                       <> <Button variant="outline-secondary" onClick={(e) => {
+                                        <Button variant="outline-secondary" onClick={(e) => {
                                             setTripId(trip._id);
                                             //console.log(tripId);
                                             setTripStatus("Approved");
-                                            handleFormSubmit(e, tripId, tripStatus)
+                                            handleFormSubmit(e, trip._id, "Approved")
                                             }} >Approve trip</Button>
                                             <Button variant="outline-secondary" onClick={(e) => {
                                                 setTripId(trip._id);
                                                 setTripStatus("Canceled");
-                                                handleFormSubmit(e, tripId, tripStatus)
+                                                handleFormSubmit(e, trip._id, "Canceled")
                                             }} >Cancel trip</Button>
                                             </>
                                         : trip.tripStatus === "Approved"
@@ -133,7 +132,7 @@ function TripsPage() {
                                                         <Link to={`/trips/details/${trip._id}`}>
                                                         <Button variant="outline-secondary" > Leave comment</Button></Link>
                                                     </>
-                                        : <></>            
+                                        : <p className="approved">Status: {trip.tripStatus}</p>            
                                     }
                                 </Card.Body>
                             </Card>
