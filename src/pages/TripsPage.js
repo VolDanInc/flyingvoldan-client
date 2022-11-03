@@ -87,7 +87,7 @@ function TripsPage() {
                                     <p>{trip.aircraftId && trip.aircraftId.name}</p>
                                     <p>Duration: {trip.duration} minutes</p>
                                     <p>Passengers: {trip.peoplesNum}</p>
-                                    <p>Cost: {trip.peoplesNum * trip.aircraftId.price * Number(trip.duration) / 60}$</p>
+                                    <p>Cost: {trip.aircraftId && trip.peoplesNum * trip.aircraftId.price * Number(trip.duration) / 60}$</p>
                                     <p id="takeOff">Take-off: {takeOff[0]} at {takeOff[1]}</p>
                                     
                                     {user && user.isAdmin
