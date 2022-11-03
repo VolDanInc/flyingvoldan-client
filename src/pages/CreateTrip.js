@@ -144,15 +144,15 @@ function CreateTrip(props) {
                     <Col>
                         <FloatingLabel controlId="floatingDateTime" label="Duration:" className="mb-3">
                             <Form.Select onChange={(e) => setDuration(e.target.value)}>
-                                <option value="30" >30</option>
-                                <option value="60" >60</option>
-                                <option value="90" >90</option>
-                                <option value="120" >120</option>
+                                <option value="30" >30 minutes</option>
+                                <option value="60" >60 minutes</option>
+                                <option value="90" >90 minutes</option>
+                                <option value="120" >120 minutes</option>
                             </Form.Select>
                         </FloatingLabel>
                     </Col>
                     <Col>
-                        <FloatingLabel controlId="floatingDatePeople" label="Peoples number:" className="mb-3">
+                        <FloatingLabel controlId="floatingDatePeople" label="Passangers:" className="mb-3">
                             <Form.Control type="number"
                                 value={peoplesNum}
                                 min="1"

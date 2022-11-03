@@ -63,12 +63,10 @@ function TripsPage() {
     let takeOff = "";
     let createTime = "";
     return (
-      
-           
-       
+        
         <div className="cards">
             <div className='ratio ratio-16x9'>
-        <img  id="tripsImg" src={cover1} />
+        <img  id="tripsImage" src={cover1} />
         </div>
             {
                 tripsArr.map((trip, index) => {
@@ -81,11 +79,11 @@ function TripsPage() {
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '22rem' }}
+                            style={{ width: '22rem', height:"32rem" }}
                             className="mb-2" >
                                 <Card.Body className="tripsCards">
-                                    <h3>Created by: {trip.userId.name}</h3>
-                                    <p>Created: {createTime[0]} at {createTime[1]}</p>
+                                    <h3>Booked by: {trip.userId.name}</h3>
+                                    <p id="createdAt">Created at: {createTime[0]} at {createTime[1]}</p>
                                     {/* <Card.Img className="cardImg" variant="top" src={aircraft.img}onError={({ currentTarget }) => {
                                 currentTarget.onerror = null;
                                 currentTarget.src = "https://www.pngitem.com/pimgs/m/119-1197957_lear-jet-clip-arts-liar-jet-icon-png.png";
@@ -94,7 +92,7 @@ function TripsPage() {
                                     <p>Duration: {trip.duration} minutes</p>
                                     <p>Passengers: {trip.peoplesNum}</p>
                                     <p>Cost: {trip.peoplesNum * trip.aircraftId.price * Number(trip.duration) / 60}$</p>
-                                    <p>Take off: {takeOff[0]} at {takeOff[1]}</p>
+                                    <p id="takeOff">Take-off: {takeOff[0]} at {takeOff[1]}</p>
                                     <p className="approved">Status: {trip.tripStatus}</p>
                                     {user && user.isAdmin
                                         ? trip.tripStatus === "Approved" && dateTime < trip.startTripNum
@@ -124,7 +122,7 @@ function TripsPage() {
                                         ? dateTime < trip.startTripNum - 86400000
                                             ? <>
                                                 <p className="approved">Status: Approved</p>
-                                                <Link to={`/trips/edit/${trip._id}`}> Edit</Link>
+                                                <Link to={`/trips/edit/${trip._id}`}><Button variant="outline-secondary" > Edit</Button> </Link>
                                             </>
                                             : dateTime > trip.startTripNum - 86400000 && dateTime < trip.startTripNum
                                                 ? <p className="waiting">Status: Waiting for taking off</p>
@@ -132,7 +130,8 @@ function TripsPage() {
                                                     ? <p className="takeOff">Status: Took off</p>
                                                     : <>
                                                         <p className="landed">Status: Landed</p>
-                                                        <Link to={`/trips/details/${trip._id}`}> Leave comment</Link>
+                                                        <Link to={`/trips/details/${trip._id}`}>
+                                                        <Button variant="outline-secondary" > Leave comment</Button></Link>
                                                     </>
                                         : <></>            
                                     }
