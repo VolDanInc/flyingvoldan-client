@@ -44,17 +44,19 @@ function AircraftDetailsPage(props) {
                 currentTarget.onerror = null;
                 currentTarget.src = "https://www.pngitem.com/pimgs/m/119-1197957_lear-jet-clip-arts-liar-jet-icon-png.png";
               }} />
-            <Card.Body>
+            <Card.Body >
               <Card.Title id="cardTitle">{aircraft.name}</Card.Title>
-              <Card.Text id="cardDescription">{aircraft.description}</Card.Text>
-              <Card.Text> Price: {aircraft.price}$ per person per hour.</Card.Text>
-              <Card.Text>  Seats: {aircraft.seats}</Card.Text>
-              <Card.Text>Availability: 
-            <span className='timeTable'>{aircraft.timetable[0]}</span>
+              <Card.Text id="aircraftDesc">{aircraft.description}</Card.Text>
+              <div className='aircraftSpace'>
+              <Card.Text id="aircraftPrice"> Price: {aircraft.price}$ per person per hour.</Card.Text>
+              <Card.Text id="aircraftSeats">  Seats: {aircraft.seats}</Card.Text>
+              <Card.Text id="aircraftAv">Availability: 
+            <span className='timeTable'>{aircraft.timetable[0]}</span> 
             <span className='timeTable'>{aircraft.timetable[1]}</span>
             <span className='timeTable'>{aircraft.timetable[2]}</span>
+            
           </Card.Text>
-
+          </div>
           {user
             ? (user.isAdmin ? <Link className="btn btn-outline-secondary" to={`/aircrafts/edit/${aircraft._id}`} role="button">Edit</Link> :
               <Link className="btn btn-outline-secondary" to={`/trips/create/${aircraft._id}`} role="button">Book now</Link>)

@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from '../context/auth.context';
 import { Card } from "react-bootstrap";
-
-
+import cover1 from "../styles/cover1.jpg"
+import Image from "react-bootstrap";
 function TripsPage() {
 
     const [tripsArr, setTripsArr] = useState([]);
@@ -36,7 +36,13 @@ function TripsPage() {
     let takeOff = "";
     let createTime = "";
     return (
+      
+           
+       
         <div className="cards">
+            <div className='ratio ratio-16x9'>
+        <img  id="tripsImg" src={cover1} />
+        </div>
             {
                 tripsArr.map((trip, index) => {
                     //console.log(trip.aircraftId);
@@ -48,7 +54,7 @@ function TripsPage() {
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '28rem' }}
+                            style={{ width: '22rem' }}
                             className="mb-2" >
                                 <Card.Body className="tripsCards">
                             <h3>Created by: {trip.userId.name}</h3>
@@ -88,6 +94,7 @@ function TripsPage() {
                 })
             }
         </div>
+      
     )
 }
 

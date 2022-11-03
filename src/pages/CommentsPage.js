@@ -3,8 +3,7 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FormControl } from "react-bootstrap";
-//import { Link, useNavigate } from "react-router-dom";
-//import { AuthContext } from '../context/auth.context';
+import cover2 from "../styles/cover2.jpg"
 
 
 
@@ -40,6 +39,9 @@ function CommentsPage() {
 let updateDate = "";
     return (
         <div className="centerCard">
+            <div className='ratio ratio-16x9'>
+        <img  id="tripsImg" src={cover2} />
+        </div>
             {
                 tripsArr.map((trip, index) => {
                     updateDate = trip.updatedAt.slice(0, 16).split('T');
@@ -48,7 +50,7 @@ let updateDate = "";
                             bg='dark'
                             key={index}
                             text='white'
-                            style={{ width: '24rem'}}
+                            style={{ width: '22rem'}}
                             className="mb-2"
                         >
                             <Card.Header>Created by: {trip.userId.name}</Card.Header>

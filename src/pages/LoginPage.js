@@ -54,7 +54,7 @@ function LoginPage(props) {
       }}
         onSubmit={handleLoginSubmit}
       >
-        <h2>Login</h2>
+        <h2 id="login">Login</h2>
         <FloatingLabel 
           controlId="floatingInput"
           label="Email address"
@@ -70,7 +70,7 @@ function LoginPage(props) {
           <Form.Control type="password" value={password} onChange={handlePassword} />
         </FloatingLabel>
         <div className="error-message">{errorMessage}</div>
-        <Button variant="outline-secondary" type="submit" >
+        <Button  variant="outline-secondary" type="submit" >
           Login
         </Button>
         <li>Don't have an account yet?</li>
