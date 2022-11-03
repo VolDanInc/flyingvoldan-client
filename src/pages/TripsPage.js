@@ -36,7 +36,7 @@ function TripsPage() {
 
     useEffect(() => {
         getTrips();
-    }, []);
+    }, [userId]);
 
     const handleFormSubmit = (e, tripId, st) => {       
         e.preventDefault();
