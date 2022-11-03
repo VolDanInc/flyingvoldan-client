@@ -12,8 +12,6 @@
   padding: 5% 5% 5% 5%;
   align-content: space-around;
   text-align: center;
-  /* margin-left: 3%;
-  margin-right: 3%; */
  background-color: #E7E6E5;
 }
 
@@ -173,13 +171,16 @@ p {
 }
 
 .tripsCards {
-  width: 100%;
-  min-height: 470px;
-  object-fit: cover;
+ 
   margin-top: 20px;
   
 }
-
+#createdAt{
+  font-size: 17px;
+}
+#takeOff{
+  font-size: 23px;
+}
 
 .landed {
   color: rgb(44, 247, 44);
@@ -212,9 +213,12 @@ p {
   flex-wrap: wrap;
   align-items: top;
   justify-content: space-around;
-  padding: 0% 1% 5% 1%;
+  padding: 0% 0% 5% 0%;
   align-content: space-around;
   text-align: center;
  
+}
+#tripsImage{
+  padding: 0% 1% 5% 1%;
 }
 
