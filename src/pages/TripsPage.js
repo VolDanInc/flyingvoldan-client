@@ -93,17 +93,17 @@ function TripsPage() {
                                     {user && user.isAdmin
                                         ? trip.tripStatus === "Approved"
                                         ? dateTime < trip.startTripNum 
-                                        ? <><p className="approved">Status: {trip.tripStatus}</p>
+                                        ? <><p className="varStatus">Status: {trip.tripStatus}</p>
                                         <Button variant="outline-secondary" onClick={(e) => {
                                                 setTripId(trip._id);
                                                 setTripStatus("Canceled");
                                                 handleFormSubmit(e, trip._id, "Canceled")
                                             }} >Cancel trip</Button></>
-                                            :<p className="canceled">Status: {trip.tripStatus}</p>
+                                            :<p className="varStatus">Status: {trip.tripStatus}</p>
                                         : trip.tripStatus === "Canceled"
-                                        ? <p className="approved">Status: {trip.tripStatus}</p>
+                                        ? <p className="varStatus">Status: {trip.tripStatus}</p>
                                         : <>
-                                        <p className="approved">Status: {trip.tripStatus}</p>
+                                        <p className="varStatus">Status: {trip.tripStatus}</p>
                                         
                                         <Button variant="outline-secondary" onClick={(e) => {
                                             setTripId(trip._id);
@@ -133,8 +133,8 @@ function TripsPage() {
                                                         <Button variant="outline-secondary" > Leave comment</Button></Link>
                                                     </>
                                         : dateTime > trip.startTripNum 
-                                        ? <p className="approved">Status: Expired</p>  
-                                        : <p className="approved">Status: {trip.tripStatus}</p>  
+                                        ? <p className="expired">Status: Expired</p>  
+                                        : <p className="varStatus">Status: {trip.tripStatus}</p>  
                                     }
                                 </Card.Body>
                             </Card>

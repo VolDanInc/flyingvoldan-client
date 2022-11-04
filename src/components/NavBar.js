@@ -18,7 +18,7 @@ function Navbar(props) {
 
   return (
     <div className="nav">
-      <Menu {...props} left isOpen={false} id="navMenu">
+      <Menu {...props} left isOpen={false} >
 
 
         {/* <nav className="nav" id = "nav"> */}

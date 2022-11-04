@@ -187,18 +187,20 @@ p {
   font-size: 18px;
 }
 
-.landed {
+.landed, .approved {
   color: rgb(44, 247, 44);
 }
-
+.takeOff{
+  color:rgb(68, 174, 250);
+}
 .waiting {
   color: yellow
 }
 
-.approved {
+.varStatus {
   color: orange
 }
-.canceled{
+.expired{
   color: red
 }
 #logout {
