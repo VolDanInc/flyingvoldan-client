@@ -132,7 +132,9 @@ function TripsPage() {
                                                         <Link to={`/trips/details/${trip._id}`}>
                                                         <Button variant="outline-secondary" > Leave comment</Button></Link>
                                                     </>
-                                        : <p className="approved">Status: {trip.tripStatus}</p>            
+                                        : dateTime > trip.startTripNum 
+                                        ? <p className="approved">Status: Expired</p>  
+                                        : <p className="approved">Status: {trip.tripStatus}</p>  
                                     }
                                 </Card.Body>
                             </Card>

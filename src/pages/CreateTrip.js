@@ -58,11 +58,12 @@ function CreateTrip(props) {
         console.log(startTrip.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false}));
         //let busy = isBusy.includes(startTrip.valueOf());
         let startTime = timetable.includes(startTrip.toLocaleTimeString());
+        let startTime0 = timetable.includes(startTrip.toLocaleTimeString() + ":00");
         let startTime1 = timetable.includes(startTrip.toLocaleTimeString('en-US', { hour12: false }));
         let startTime2 = timetable.includes(startTrip.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false}));
 
 
-        if (startTrip && (startTime || startTime1 || startTime2) && !message) {
+        if (startTrip && (startTime || startTime0 || startTime1 || startTime2) && !message) {
             //setIsBusy([...isBusy, startTripNum]);
             //console.log(startTripNum);
 
